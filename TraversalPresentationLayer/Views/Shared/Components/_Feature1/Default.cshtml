@@ -1,0 +1,58 @@
+﻿@using EntityLayer.Concrete
+@model List<Feature1>
+
+<div class="best-rooms py-5">
+    <div class="container py-md-5">
+        <div class="ban-content-inf row">
+            @if (Model.Count > 0)// ilk değer
+            {
+                <div class="maghny-gd-1 col-lg-6">
+                    <div class="maghny-grid">
+                        <figure class="effect-lily border-radius  m-0">
+                            <img class="img-fluid" src="@Model[0].Image" alt="" />
+                            <figcaption>
+                                <div>
+                                    <h4>@Model[0].Name</h4>
+                                    <p>@Model[0].Description </p>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            }
+            <div class="maghny-gd-1 col-lg-6 mt-lg-0 mt-4">
+                <div class="row">
+                    @for (int i = 1; i < Model.Count; i++)// ilk değerden sonraki resimler
+                    {
+                        var item = Model[i];
+
+                        string imageDivClass = "";
+
+                        if (i < 3)
+                        {
+                            imageDivClass = "maghny-gd-1 col-6";
+                        }
+                        else
+                        if (i > 2)
+                        {
+                            imageDivClass = "maghny-gd-1 col-6 mt-4";
+                        }
+                        <div class="@imageDivClass">
+                            <div class="maghny-grid">
+                                <figure class="effect-lily border-radius">
+                                    <img class="img-fluid" src="@item.Image" alt="" />
+                                    <figcaption>
+                                        <div>
+                                            <h4>@item.Name</h4>
+                                            <p>@item.Description</p>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

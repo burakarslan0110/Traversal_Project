@@ -1,0 +1,107 @@
+﻿@model Traversal.Models.UserRegisterViewModel
+@{
+    Layout = null;
+}
+
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+	<title>Traversal Misafir Üye Kayıt</title>
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords"
+		  content="Traversal" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //Meta tag Keywords -->
+	<!--/Style-CSS -->
+	<link rel="stylesheet" href="/Register/css/style.css" type="text/css" media="all" />
+	<style>
+		.text-danger {
+			color: red;
+		}
+	</style>
+	<!--//Style-CSS -->
+</head>
+
+<body>
+	<!-- /login-section -->
+	<section class="w3l-login-6">
+		<div class="login-hny">
+			<div class="form-content">
+				<div class="form-right">
+					<div class="overlay">
+						<div class="grid-info-form">
+							<h5>Traversal Misafir Üye Kayıt Sistemi</h5>
+							<h3>Traversal'a Kayıt Ol!</h3>
+							<p>
+								En güzel tatil anılarınızı bizlerle yorum olarak paylaşmak ve diğer misafirlerimize deneyimlerinizi aktarmak için Traversal'a üye olun!'
+							</p>
+							<a href="index.html" class="read-more-1 btn">Get Started</a>
+						</div>
+
+					</div>
+				</div>
+				<div class="form-left">
+						<form method="post" class="signin-form">
+						<div class="form-input">
+							<label>Adınız: </label>
+							<input type="text" asp-for="Name" required/>
+							<span asp-validation-for="Name" class="text-danger"></span>
+						</div>
+						<div class="form-input">
+							<label>Soyadınız: </label>
+							<input type="text" asp-for="Surname" required/>
+							<span asp-validation-for="Surname" class="text-danger"></span>
+
+						</div>
+						<div class="form-input">
+							<label>Kullanıcı Adınız: </label>
+							<input type="text" asp-for="Username" required />
+						</div>
+						<div class="form-input">
+							<label>E-Posta Adresiniz: </label>
+							<input type="email" asp-for="EMail" required/>
+						</div>
+						<div class="form-input">
+							<label>Parolanız: </label>
+							<input type="password" asp-for="Password" required />
+							<span asp-validation-for="Password" class="text-danger"></span>
+						</div>
+						<div class="form-input">
+							<label>Parola Tekrarı: </label>
+							<input type="password" asp-for="ConfirmPassword" required />
+							<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+						</div>
+
+						<button class="btn">Üye Ol</button>
+					</form>
+					<div class="copy-right text-center">
+						<p>
+							  Design by
+							<a href="http://w3layouts.com/" target=" _blank">W3layouts</a> | Edited By <a href="https://burakarslan.me" target=" _blank">Burak Arslan</a>
+						</p>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+	
+</body>
+
+</html>
