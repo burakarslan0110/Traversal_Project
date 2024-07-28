@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -12,13 +13,31 @@ namespace Traversal.Areas.Member.Controllers
         DestinationManager _destinationManager = new DestinationManager(new EFDestinationDal());
 
         ReservationManager _reservationManager = new ReservationManager(new EFReservationDal());
-        public IActionResult MyCurrentReservation()
+
+        private readonly UserManager<AppUser> _userManager;
+
+        public ReservationController(UserManager<AppUser> userManager)
         {
-           return View();  
+            _userManager = userManager;
         }
-        public IActionResult MyOldReservation()
+
+        public async Task<IActionResult> MyCurrentReservation()
         {
-            return View();
+            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            var valueslist = _reservationManager.GetListWithReservationByApproved(values.Id);
+            return View(valueslist);
+        }
+        public async Task<IActionResult> MyOldReservation()
+        {
+            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+            var valueslist = _reservationManager.GetListWithReservationByOld(values.Id);
+            return View(valueslist);
+        }
+        public async Task<IActionResult> MyApprovalReservation()
+        {
+            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+           var valueslist = _reservationManager.GetListWithReservationByWaitApproval(values.Id);
+            return View(valueslist);
         }
 
         [HttpGet]
@@ -36,7 +55,7 @@ namespace Traversal.Areas.Member.Controllers
         [HttpPost]
         public IActionResult NewReservation(Reservation p)
         {
-            p.AppUserID = 1;
+            p.AppUserID = 5;
             p.Status = "Onay Bekliyor";
             _reservationManager.TInsert(p);
             return RedirectToAction("MyCurrentReservation");

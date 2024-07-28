@@ -9,6 +9,8 @@ namespace DataAccessLayer.Abstract
 {
     public interface IReservationDal : IGenericDal<Reservation>
     {
-
+        List<Reservation> GetListWithReservationByWaitApproval(int id);
+        List<Reservation> GetListWithReservationByApproved(int id);
+        List<Reservation> GetListWithReservationByOld(int id);
     }
 }
