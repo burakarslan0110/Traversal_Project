@@ -22,9 +22,6 @@ namespace TraversalPresentationLayer.ViewComponents.MemberDashboard
             ViewBag.mPhoneNumber = values.PhoneNumber;
             ViewBag.mEmail = values.Email;
             ViewBag.mUsername = values.UserName;
-            
-
-
             return View();
         }
     }
