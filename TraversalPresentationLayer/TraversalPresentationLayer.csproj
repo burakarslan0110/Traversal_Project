@@ -376,6 +376,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Member\Data\" />
     <Folder Include="wwwroot\Member_UI\.git\objects\info\" />
     <Folder Include="wwwroot\Member_UI\.git\objects\pack\" />
