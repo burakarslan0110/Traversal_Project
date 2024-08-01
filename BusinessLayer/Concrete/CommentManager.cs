@@ -11,7 +11,7 @@ namespace BusinessLayer.Concrete
 {
     public class CommentManager : ICommentService
     {
-        ICommentDal _commentDal;
+       ICommentDal _commentDal;
 
         public CommentManager(ICommentDal commentDal)
         {
@@ -25,12 +25,12 @@ namespace BusinessLayer.Concrete
 
         public Comment TGetByID(int id)
         {
-            throw new NotImplementedException();
+           return _commentDal.GetByID(id);
         }
 
         public List<Comment> TGetList()
         {
-            throw new NotImplementedException();
+            return _commentDal.GetList();
         }
 
         public List<Comment> TGetDestinationByID(int id)
@@ -45,6 +45,11 @@ namespace BusinessLayer.Concrete
         public void TUpdate(Comment t)
         {
             _commentDal.Update(t);
+        }
+
+        public List<Comment> TGetListCommentWithDestination()
+        {
+            return _commentDal.GetListCommentWithDestination();
         }
     }
 }

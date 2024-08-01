@@ -1,0 +1,44 @@
+﻿@using EntityLayer.Concrete
+@model List<Comment>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <h4 class="card-header">Yorumlar</h4>
+        <table class="table table-hover">
+            <thead class="">
+                <tr>
+                    <th>Yorum ID</th>
+                    <th>Kullanıcı Ad Soyad</th>
+                    <th>Rota</th>
+                    <th>Tarih</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@item.CommentID</strong></td>
+                        <td>@item.CommentUser</td>
+                        <td>@item.Destination.City</td>
+                        <td><span class="badge bg-label-primary me-1">@Convert.ToDateTime(item.CommentDate).ToShortDateString()</span></td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/Destination/DestinationDetails/@item.DestinationID"><i class="bx bx-edit-alt me-1"></i>Yorumu Sitede Gör</a>
+                                    <a class="dropdown-item" href="/Admin/Comment/DeleteComment/@item.CommentID"><i class="bx bx-trash me-1"></i>Yorumu Sil</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+</div>
+
