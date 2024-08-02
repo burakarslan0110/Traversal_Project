@@ -1,0 +1,25 @@
+﻿@model TraversalPresentationLayer.Models.MailRequest
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>E-Posta Gönderme</h1>
+<form method="post">
+    <div class="form-group">
+        @Html.Label("Alıcı E-posta adresi: ")
+        <input type="email" asp-for="ReceiverMail" class="form-control" required />
+    </div>
+    <div class="form-group">
+        @Html.Label("Konu Başlığı: ")
+        <input type="text" asp-for="Subject" class="form-control" required />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Mesaj İçeriği: ")
+        <textarea cols="30" rows="5" asp-for="Body" class="form-control" required></textarea>
+    </div>
+    <br />
+    <button class="btn btn-sm btn-outline-dark" onclick="alert('E-posta başarıyla gönderildi!');">E-posta Gönder</button>
+</form>
+
