@@ -9,6 +9,7 @@ namespace TraversalPresentationLayer.Areas.Admin.Controllers
     public class UserController : Controller
     {
         AppUserManager _appUserManager = new AppUserManager(new EFAppUserDal());
+        ReservationManager _reservationManager = new ReservationManager(new EFReservationDal());
         public IActionResult Index()
         {
             var values = _appUserManager.TGetList();
@@ -27,6 +28,7 @@ namespace TraversalPresentationLayer.Areas.Admin.Controllers
             var values = _appUserManager.TGetByID(id);
             return View(values);
         }
+
         [HttpPost]
         public IActionResult EditUser(AppUser appUser)
         {
@@ -40,7 +42,7 @@ namespace TraversalPresentationLayer.Areas.Admin.Controllers
         }
         public IActionResult ReservationUser(int id)
         {
-            var values = _appUserManager.TGetByID(id);
+            var values = _reservationManager.GetListWithReservationByApproved(id);
             return View(values);
         }
 

@@ -18,14 +18,24 @@ namespace BusinessLayer.Concrete
 			_guideDal = guideDal;
 		}
 
-		public void TDelete(Guide t)
+        public void TChangeToFalseByGuide(int id)
+        {
+			_guideDal.ChangeToFalseByGuide(id);
+        }
+
+        public void TChangeToTrueByGuide(int id)
+        {
+			_guideDal.ChangeToTrueByGuide(id);
+        }
+
+        public void TDelete(Guide t)
 		{
 			_guideDal.Delete(t);
 		}
 
 		public Guide TGetByID(int id)
 		{
-			throw new NotImplementedException();
+			return _guideDal.GetByID(id);
 		}
 
 		public List<Guide> TGetList()

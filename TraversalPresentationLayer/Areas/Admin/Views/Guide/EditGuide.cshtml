@@ -1,0 +1,39 @@
+﻿@model EntityLayer.Concrete.Guide
+@{
+    ViewData["Title"] = "EditGuide";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Rehber Düzenleme</h1>
+<form method="post">
+    @Html.HiddenFor(x=>x.GuideID)
+    <div class="form-group">
+        @Html.Label("Ad Soyad: ")
+        <input type="text" asp-for="GuideName" class="form-control" required />
+        <span asp-validation-for="GuideName" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Rehber Fotoğraf: ")
+        <input type="text" asp-for="Image" class="form-control" required />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Instagram URL: ")
+        <input type="text" asp-for="InstagramURL" class="form-control" />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Facebook URL: ")
+        <input type="text" asp-for="FacebookURL" class="form-control" />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Açıklama: ")
+        <textarea cols="30" rows="5" class="form-control" asp-for="Description"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <br />
+    <button class="btn btn-sm btn-outline-dark" onclick="alert('Yeni rehber kaydı başarıyla oluşturuldu!');">Rehber Oluştur</button>
+</form>

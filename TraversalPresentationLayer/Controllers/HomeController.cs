@@ -15,6 +15,7 @@ namespace Traversal.Controllers
 
 		public IActionResult Index()
 		{
+			_logger.LogInformation("Index sayfasý çaðrýldý");
 			return View();
 		}
 
