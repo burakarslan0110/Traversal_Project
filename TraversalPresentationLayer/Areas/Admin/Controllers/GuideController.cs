@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
@@ -10,10 +11,16 @@ namespace TraversalPresentationLayer.Areas.Admin.Controllers
     [Area("Admin")]
     public class GuideController : Controller
     {
-        GuideManager _guideManager = new GuideManager(new EFGuideDal());
+        private readonly IGuideService _guideService;
+
+        public GuideController(IGuideService guideService)
+        {
+            _guideService = guideService;
+        }
+
         public IActionResult Index()
         {
-            var values = _guideManager.TGetList();
+            var values = _guideService.TGetList();
             return View(values);
         }
         [HttpGet]
@@ -28,7 +35,7 @@ namespace TraversalPresentationLayer.Areas.Admin.Controllers
             ValidationResult validationResult = validationRules.Validate(guide);
             if(validationResult.IsValid)
             {
-                _guideManager.TInsert(guide);
+                _guideService.TInsert(guide);
                 return RedirectToAction("Guide", "Admin");
             }
             else
@@ -43,29 +50,29 @@ namespace TraversalPresentationLayer.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult EditGuide(int id)
         {
-            var values = _guideManager.TGetByID(id);
+            var values = _guideService.TGetByID(id);
             return View(values);
         }
         [HttpPost]
         public IActionResult EditGuide(Guide guide)
         {
-            _guideManager.TUpdate(guide);
+            _guideService.TUpdate(guide);
             return RedirectToAction("Guide", "Admin");
         }
         public IActionResult ChangeToTrue(int id)
         {
-            _guideManager.TChangeToTrueByGuide(id);
+            _guideService.TChangeToTrueByGuide(id);
             return RedirectToAction("Guide", "Admin");
         }
         public IActionResult ChangeToFalse(int id)
         {
-            _guideManager.TChangeToFalseByGuide(id);
+            _guideService.TChangeToFalseByGuide(id);
             return RedirectToAction("Guide", "Admin");
         }
         public IActionResult DeleteGuide(int id)
         {
-            var values = _guideManager.TGetByID(id);
-            _guideManager.TDelete(values);
+            var values = _guideService.TGetByID(id);
+            _guideService.TDelete(values);
             return RedirectToAction("Guide", "Admin");
         }
 

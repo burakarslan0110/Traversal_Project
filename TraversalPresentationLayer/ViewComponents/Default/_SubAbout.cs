@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,10 +7,16 @@ namespace Traversal.ViewComponents.Default
 {
     public class _SubAbout : ViewComponent
     {
-        SubAboutManager _subAboutManager = new SubAboutManager(new EFSubAboutDal());
+        private readonly ISubAboutService _subAboutService;
+
+        public _SubAbout(ISubAboutService subAboutService)
+        {
+            _subAboutService = subAboutService;
+        }
+
         public IViewComponentResult Invoke()
         {
-            var values = _subAboutManager.TGetList();
+            var values = _subAboutService.TGetList();
             return View(values);
         }
     }

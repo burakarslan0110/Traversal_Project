@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,17 +8,23 @@ namespace TraversalPresentationLayer.Areas.Admin.Controllers
     [Area("Admin")]
     public class CommentController : Controller
     {
-        CommentManager _commentManager = new CommentManager(new EFCommentDal());
+        private readonly ICommentService _commentService;
+
+        public CommentController(ICommentService commentService)
+        {
+            _commentService = commentService;
+        }
+
         public IActionResult Index()
         {
-            var values = _commentManager.TGetListCommentWithDestination();
+            var values = _commentService.TGetListCommentWithDestination();
             return View(values);
         }
 
         public IActionResult DeleteComment(int id)
         {
-            var values = _commentManager.TGetByID(id);
-            _commentManager.TDelete(values);
+            var values = _commentService.TGetByID(id);
+            _commentService.TDelete(values);
             return RedirectToAction("Comment","Admin");
         }
     }
