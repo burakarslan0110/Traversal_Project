@@ -32,7 +32,8 @@ builder.Services.AddDbContext<Context>();
 Extensions.ContainerDependencies(builder.Services);
 
 builder.Services.AddAutoMapper(typeof(MapProfile).Assembly);
-builder.Services.AddTransient<IValidator<AnnouncementAddDTO>, AnnouncementValidator>();
+
+Extensions.CustomValidator(builder.Services);
 
 builder.Services.AddControllersWithViews().AddFluentValidation();
 
