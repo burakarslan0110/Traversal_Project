@@ -1,0 +1,33 @@
+﻿@model List<TraversalPresentationLayer.Areas.Admin.Models.AnnouncementListViewModel>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="card">
+    <h4 class="card-header">Duyuru Listesi</h4>
+    <table class="table table-hover">
+        <thead class="">
+            <tr>
+                <th></th>
+                <th>Başlık</th>
+                <th>İçerik</th>
+                <th>Detaylar</th>
+            </tr>
+        </thead>
+        <tbody class="table-border-bottom-0">
+            @foreach (var item in Model)
+            {
+                count++;
+                <tr>
+                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@count</strong></td>
+                    <td>@item.Title</td>
+                    <td>@item.Content</td>
+                    <td><a href="#" class="btn btn-outline-dark">Detaylar</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

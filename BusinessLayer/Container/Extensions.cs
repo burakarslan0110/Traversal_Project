@@ -17,20 +17,33 @@ namespace BusinessLayer.Container
         {
             services.AddScoped<ICommentService, CommentManager>();
             services.AddScoped<ICommentDal, EFCommentDal>();
+
             services.AddScoped<IDestinationService, DestinationManager>();
             services.AddScoped<IDestinationDal, EFDestinationDal>();
+
             services.AddScoped<IAppUserService, AppUserManager>();
             services.AddScoped<IAppUserDal, EFAppUserDal>();
+
             services.AddScoped<IReservationService, ReservationManager>();
             services.AddScoped<IReservationDal, EFReservationDal>();
+
             services.AddScoped<IGuideService, GuideManager>();
             services.AddScoped<IGuideDal, EFGuideDal>();
+
             services.AddScoped<IFeature1Service, Feature1Manager>();
             services.AddScoped<IFeature1Dal, EFFeature1Dal>();
+
             services.AddScoped<ISubAboutService, SubAboutManager>();
             services.AddScoped<ISubAboutDal, EFSubAboutDal>();
+
             services.AddScoped<ITestimonialService, TestimonialManager>();
             services.AddScoped<ITestimonialDal, EFTestimonialDal>();
+
+            services.AddScoped<IContactUsService, ContactUsManager>();
+            services.AddScoped<IContactUsDal, EFContactUsDal>();
+
+            services.AddScoped<IAnnouncementService, AnnouncementManager>();
+            services.AddScoped<IAnnouncementDal, EFAnnouncementDal>();
         }
     }
 }
