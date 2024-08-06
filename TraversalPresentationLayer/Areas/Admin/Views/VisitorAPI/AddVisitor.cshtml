@@ -1,0 +1,39 @@
+﻿@model VisitorViewModel
+@{
+    ViewData["Title"] = "AddVisitor";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>API ile Ziyaretçi Ekleme</h1>
+<form method="post">
+    <div class="form-group">
+        @Html.Label("Ziyaretçi Adı: ")
+        <input type="text" asp-for="Name" class="form-control" required />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Ziyaretçi Soyadı: ")
+        <input type="text" asp-for="Surname" class="form-control" required />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Ziyaretçi Şehri: ")
+        <input type="text" asp-for="City" class="form-control" required />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Ziyaretçi Ülke: ")
+        <input type="text" asp-for="Country" class="form-control" required />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Ziyaretçi E-posta Adresi: ")
+        <input type="text" asp-for="Email" class="form-control" required />
+    </div>
+    <br />
+    <button class="btn btn-sm btn-outline-dark" onclick="alert('Yeni ziyaretçi kaydı API üzerinden başarıyla oluşturuldu!');">API ile yeni ziyaretçi Oluştur</button>
+</form>
+
+
+
+

@@ -29,6 +29,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
 builder.Services.AddDbContext<Context>();
 
+builder.Services.AddHttpClient();
+
 Extensions.ContainerDependencies(builder.Services);
 
 builder.Services.AddAutoMapper(typeof(MapProfile).Assembly);
