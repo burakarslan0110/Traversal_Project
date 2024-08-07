@@ -9,6 +9,7 @@ namespace Traversal.Controllers
     public class DestinationController : Controller
     {
        private readonly IDestinationService _destinationService;
+       
 
         public DestinationController(IDestinationService destinationService)
         {
@@ -17,6 +18,7 @@ namespace Traversal.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.v12 = "12";
             var values = _destinationService.TGetList();
             return View(values);
         }

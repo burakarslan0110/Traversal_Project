@@ -1,0 +1,20 @@
+﻿@model TraversalPresentationLayer.CQRS.Commands.GuideCommands.CreateGuideCommand
+@{
+    ViewData["Title"] = "AddGuide";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>CQRS MediatR Rehber Ekleme</h1>
+<form method="post">
+    <label>Ad Soyad: </label>
+    <input type="text" asp-for="GuideName" class="form-control" />
+    <br />
+    <label>Açıklama: </label>
+    <input type="text" asp-for="Description" class="form-control" />
+    <br />
+    <label>Görsel Yolu: </label>
+    <input type="text" asp-for="Image" class="form-control" />
+    <br />
+    <button class="btn btn-outline-success">MediatR CQRS Üzerinden Rehber Ekkle</button>
+</form>
+
