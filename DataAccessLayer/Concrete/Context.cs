@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete
 {
-	public class Context : IdentityDbContext<AppUser,AppRole,int>
-	{
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-		{
-			optionsBuilder.UseSqlServer("server = (localdb)\\MSSQLLocalDB;database=TraversalDB;integrated security=true;");
+    public class Context : IdentityDbContext<AppUser, AppRole, int>
+    {
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("server = (localdb)\\MSSQLLocalDB;database=TraversalDB;integrated security=true;");
 
-		}
+        }
 
         public DbSet<About1> Abouts1 { get; set; }
         public DbSet<About2> Abouts2 { get; set; }
@@ -31,5 +31,6 @@ namespace DataAccessLayer.Concrete
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Announcement> Announcements { get; set; }
+        public DbSet<Account> Accounts { get; set; }
     }
 }
