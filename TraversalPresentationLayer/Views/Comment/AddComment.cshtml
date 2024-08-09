@@ -13,15 +13,14 @@
         </div>
         <div class="input-grids row">
 
-            <div class="form-group col-lg-6">
+            <div class="form-group col-lg-12">
                 <input type="text" name="CommentUser" class="form-control" placeholder="Adınız Soyadınız*"
                        required="">
             </div>
-            <div class="form-group col-lg-6">
-                <input type="hidden" value="@Model.DestinationID" name="DestinationID" class="form-control" placeholder="Destination ID*" required="">
-            </div>
         </div>
-
+        <div class="form-group col-lg-6">
+            <input type="hidden" value="@Model.DestinationID" name="DestinationID" class="form-control" placeholder="Destination ID*" required="">
+        </div>
         <div class="submit text-right">
             <button class="btn btn-style btn-primary">Yorum Yap</button>
         </div>
