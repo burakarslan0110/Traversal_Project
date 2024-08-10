@@ -25,5 +25,8 @@ namespace EntityLayer.Concrete
 		public List<Comment> Comment { get; set; }
 
         public List<Reservation> Reservations { get; set; }
+
+		public int? GuideID { get; set; }
+		public Guide Guide { get; set; }
     }
 }

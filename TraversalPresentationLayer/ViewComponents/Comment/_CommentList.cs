@@ -16,7 +16,7 @@ namespace Traversal.ViewComponents.Comment
 
         public IViewComponentResult Invoke(int id)
         {
-            var values = _commentService.TGetDestinationByID(id);
+            var values = _commentService.TGetListCommentWithDestinationAndUser(id);
             return View(values);
         }
     }

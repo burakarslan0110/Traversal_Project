@@ -2,6 +2,7 @@
 using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Traversal.Controllers
@@ -9,6 +10,7 @@ namespace Traversal.Controllers
     public class CommentController : Controller
     {
         private readonly ICommentService _commentService;
+
 
         public CommentController(ICommentService commentService)
         {
