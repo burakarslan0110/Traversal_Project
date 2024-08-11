@@ -1,0 +1,57 @@
+﻿@model DTOLayer.DTOs.ContactDTOs.SendMessageDTO
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+  <!-- //header -->
+  <!-- about breadcrumb -->
+  <section class="w3l-about-breadcrumb text-left">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+      <div class="container py-2">
+        <h2 class="title">İletişim</h2>
+        <ul class="breadcrumbs-custom-path mt-2">
+          <li><a href="/Default/Index">Ana Sayfa</a></li>
+          <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> İletişim </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <!-- //about breadcrumb -->
+<!-- contact-form -->
+<section class="w3l-contact" id="contact">
+  <div class="contact-infubd py-5">
+    <div class="container py-lg-3">
+      <div class="contact-grids row">
+        @await Component.InvokeAsync("_ContactInfo")
+        <div class="col-lg-6 mt-lg-0 mt-5 contact-right">
+          <form method="post" class="signin-form">
+            <div class="input-grids">
+              <div class="form-group">
+                <input type="text" placeholder="Adınız Soyadınız*" asp-for="Name" class="contact-input" required>
+                                <span asp-validation-for="Name" style="color:red"></span>
+              </div>
+              <div class="form-group">
+                <input type="email" placeholder="EPosta Adresiniz*" asp-for="Email" class="contact-input" required />
+                                <span asp-validation-for="Email" style="color:red"></span>
+              </div>
+              <div class="form-group">
+                <input type="text" placeholder="Konu*" asp-for="Subject" class="contact-input" required/>
+                <span asp-validation-for="Subject" style="color:red"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <textarea placeholder="Mesajınız*" asp-for="MessageBody" required></textarea>
+                <span asp-validation-for="MessageBody" style="color:red"></span>
+            </div>
+            <div class="text-right">
+                            <button class="btn btn-style btn-secondary">Mesajı Gönder</button>
+            </div>
+          </form>
+        </div>
+        </div>
+      </div>
+    </div>
+</section>
+<!-- /contact-form -->
+

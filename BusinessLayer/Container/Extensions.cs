@@ -3,10 +3,12 @@ using BusinessLayer.Abstract.AbstractUOW;
 using BusinessLayer.Concrete;
 using BusinessLayer.Concrete.ConcreteUOW;
 using BusinessLayer.ValidationRules;
+using BusinessLayer.ValidationRules.ContactUsValidationRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.EntityFramework;
 using DataAccessLayer.UnitOfWork;
 using DTOLayer.DTOs.AnnouncementDTOs;
+using DTOLayer.DTOs.ContactDTOs;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -48,6 +50,9 @@ namespace BusinessLayer.Container
             services.AddScoped<IContactUsService, ContactUsManager>();
             services.AddScoped<IContactUsDal, EFContactUsDal>();
 
+            services.AddScoped<IContactService, ContactManager>();
+            services.AddScoped<IContactDal, EFContactDal>();
+
             services.AddScoped<IAnnouncementService, AnnouncementManager>();
             services.AddScoped<IAnnouncementDal, EFAnnouncementDal>();
 
@@ -60,6 +65,7 @@ namespace BusinessLayer.Container
         public static void CustomValidator(IServiceCollection services)
         {
             services.AddTransient<IValidator<AnnouncementAddDTO>, AnnouncementValidator>();
+            services.AddTransient<IValidator<SendMessageDTO>, SendContactUsValidator>();
         }
     }
 }
