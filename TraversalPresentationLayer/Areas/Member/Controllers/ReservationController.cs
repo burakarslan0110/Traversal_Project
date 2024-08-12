@@ -46,19 +46,20 @@ namespace Traversal.Areas.Member.Controllers
         [HttpGet]
         public IActionResult NewReservation()
         {
-            List<SelectListItem> values =(from x in _destinationService.TGetList()
+            List<SelectListItem> values = (from x in _destinationService.TGetList()
                                           select new SelectListItem
                                           {
                                               Text = x.City,
                                               Value = x.DestinationID.ToString()
                                           }).ToList();
-            ViewBag.v = values;
+            ViewBag.VNR = values;
             return View();
         }
         [HttpPost]
         public IActionResult NewReservation(Reservation p)
         {
-            p.AppUserID = 5;
+            var user = _userManager.GetUserId(User);
+            p.AppUserID = Convert.ToInt32(user);
             p.Status = "Onay Bekliyor";
             _reservationService.TInsert(p);
             return RedirectToAction("MyCurrentReservation");

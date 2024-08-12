@@ -1,7 +1,9 @@
-﻿<section class="w3l-main-slider" id="home">
+﻿@model List<EntityLayer.Concrete.Destination>
+
+<section class="w3l-main-slider" id="home">
     <div class="banner-content">
         <div id="demo-1"
-             data-zs-src='["/Traversal-Starter/assets/images/banner1.jpg", "/Traversal-Starter/assets/images/banner2.jpg","/Traversal-Starter/assets/images/banner3.jpg", "/Traversal-Starter/assets/images/banner4.jpg"]'
+             data-zs-src='["/Traversal-Starter/assets/images/banner1.jpg", "https://images.unsplash.com/photo-1424112908919-49d7a3e04482?q=80&w=1773&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","https://images.unsplash.com/photo-1606864034826-111e5945de8d?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "https://images.unsplash.com/photo-1695719930864-d29bab856dfe?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"]'
              data-zs-overlay="dots">
             <div class="demo-inner-content">
                 <div class="container">
@@ -14,13 +16,12 @@
                                     <div class="form-input col-md-4 mt-md-0 mt-3">
 
                                         <select name="selectpicker" class="selectpicker">
-                                            <option value="">Rotalar</option>
-                                            <option value="africa">Doğu Anadolu Gezisi</option>
-                                            <option value="america">Belçika-Hollanda</option>
-                                            <option value="asia">Almanya</option>
-                                            <option value="eastern-europe">Balkan Turları</option>
-                                            <option value="europe">Mısır Turu</option>
-                                            <option value="south-america">İspanya-Tunus</option>
+                                            <option hidden>Rotalar</option>
+                                            @foreach(var item in Model)
+                                            {
+                                                <option value="">@item.City</option>
+                                            }
+                                            
                                         </select>
 
                                     </div>
@@ -29,11 +30,11 @@
                                         <input type="date" name="" placeholder="Date" required="">
                                     </div>
                                     <div class="bottom-btn col-md-4 mt-md-0 mt-3">
-                                        <button class="btn btn-style btn-secondary">
-                                            <span class="fa fa-search mr-3"
-                                                  aria-hidden="true"></span> Ara
-                                        </button>
+                                        <a href="/Login/SignIn" class="btn btn-style btn-secondary" target="_blank">
+                                            <span class="fa fa-search mr-3" aria-hidden="true"></span>Ara
+                                        </a>
                                     </div>
+
                                 </div>
                             </form>
                         </div>

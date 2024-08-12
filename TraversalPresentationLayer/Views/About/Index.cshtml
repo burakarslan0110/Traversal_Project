@@ -1,0 +1,69 @@
+﻿@model List<EntityLayer.Concrete.About1>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<body>
+  <!--header-->
+  <!-- //header -->
+  <!-- about breadcrumb -->
+  <section class="w3l-about-breadcrumb text-left">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+      <div class="container py-2">
+        <h2 class="title">Hakkımızda</h2>
+        <ul class="breadcrumbs-custom-path mt-2">
+          <li><a href="/Default/Index">Ana Sayfa</a></li>
+          <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Hakkımızda </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <!-- //about breadcrumb -->
+  <!-- /about-6-->
+  @foreach(var item in Model)
+  {
+        <section class="w3l-cta4 py-5">
+            <div class="container py-lg-5">
+                <div class="ab-section text-center">
+                    <h6 class="sub-title">Biz Kimiz?</h6>
+                    <h3 class="hny-title">@item.Title1</h3>
+                    <p class="py-3 mb-3">
+                        @item.Description1
+                    </p>
+                </div>
+                <div class="row mt-1">
+                    <div class="col-md-9 mx-auto">
+                        <img src="@item.Image1" class="img-fluid" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- //about-6-->
+        <!-- /content-6-->
+        <section class="w3l-content-6 py-5">
+            <div class="container py-lg-5">
+                <div class="row">
+                    <div class="col-lg-6 content-6-left pr-lg-5">
+                        <h6 class="sub-title">Neden Bizi Terih Etmelisiniz?</h6>
+                        <h3 class="hny-title">@item.Title2</h3>
+                    </div>
+                    <div class="col-lg-6 content-6-right mt-lg-0 mt-4">
+                        <p class="mb-3">
+                            @item.Description2
+                        </p>
+                        <a href="/Login/SignUp/" class="btn btn-style btn-primary mt-4">Traversal'e Üye Ol!</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+  
+<!-- //content-6-->
+  <!-- stats -->
+  <!-- //stats -->
+  <!-- team -->
+  <!-- //team -->
+
+  <!--/w3l-footer-29-main-->
+</body>
