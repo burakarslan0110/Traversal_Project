@@ -1,4 +1,5 @@
-﻿using EntityLayer.Concrete;
+﻿using DTOLayer.DTOs.AppUserDTOs;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -24,7 +25,7 @@ namespace Traversal.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> SignUp(UserRegisterViewModel p)
+        public async Task<IActionResult> SignUp(AppUserRegisterDTO p)
         {
             AppUser appUser = new AppUser()
             {
@@ -60,7 +61,7 @@ namespace Traversal.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> SignIn(UserSignInViewModel p)
+		public async Task<IActionResult> SignIn(AppUserLoginDTO p)
 		{
 			if (ModelState.IsValid)
 			{
@@ -71,11 +72,11 @@ namespace Traversal.Controllers
 				}
 				else
 				{
-					ModelState.AddModelError(string.Empty, "Geçersiz giriş denemesi, lütfen kullanıcı adınızı ve şifrenizi kontrol edin.");
-					return RedirectToAction("SignIn", "Login");
+					ModelState.AddModelError(string.Empty, "Kullanıcı adı veya şifreniz yanlış, lütfen tekrar deneyin!");
+                    return View(p);
 				}
 			}
-			return View();
+			return View(p);
 		}
 
 	}

@@ -1,4 +1,4 @@
-﻿@model Traversal.Models.UserSignInViewModel
+﻿@model DTOLayer.DTOs.AppUserDTOs.AppUserLoginDTO
 @{
     Layout = null;
 }
@@ -28,12 +28,11 @@
     <!--===============================================================================================-->
 </head>
 <body>
-
-    @* <div class="limiter"> *@
+    <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100">
                 <div class="login100-pic js-tilt" data-tilt>
-                    <p class="text-center mb-4">Rezervasyon oluşturmak için lütfen hesabınıza giriş yapın veya üye olun.</p>
+                    <h4 class="text-center mb-4">Rezervasyon oluşturmak için lütfen hesabınıza giriş yapın veya üye olun.</h4>
                     
                     <img src="~/Login_v1/images/img-01.png" alt="IMG">
 
@@ -42,18 +41,27 @@
                     <span class="login100-form-title">
                     Traversal Kullanıcı Girişi
                     </span>
-                    <div class="wrap-input100 validate-input" data-validate="Geçerli bir e-posta adresi girin. Örnek: ex@abc.xyz">
-                        <input class="input100" type="text" asp-for="Username" placeholder="E-Posta Adresi">
-                        <span asp-validation-for="Username" class="text-danger></span>
+                    @if (ViewData.ModelState.Values.Any(v => v.Errors.Count > 0))
+                    {
+                        <div class="alert alert-danger">
+                            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                            {
+                                <p>@error.ErrorMessage</p>
+                            }
+                        </div>
+                    }
+                    <div class="wrap-input100 validate-input" data-validate="Geçerli bir kullanıcı adı girin.">
+                        <input class="input100" type="text" asp-for="Username" placeholder="Kullanıcı Adı">
+                        <span asp-validation-for="Username" class="text-danger"></span>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
-                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <i class="fa fa-user" aria-hidden="true"></i>
                         </span>
                     </div>
 
                     <div class="wrap-input100 validate-input" data-validate="Parola gereklidir.">
                         <input class="input100" type="password" asp-for="Password" placeholder="Parola">
-                        <span asp-validation-for="Password" class="text-danger></span>
+                        <span asp-validation-for="Password" class="text-danger"></span>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">
                             <i class="fa fa-lock" aria-hidden="true"></i>
@@ -78,14 +86,15 @@
                             </a>
                         </span>
                     </div>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
                 </form>
             </div>
         </div>
     </div>
-
-
-
-
     <!--===============================================================================================-->
     <script src="~/Login_v1/vendor/jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
@@ -102,8 +111,6 @@
     </script>
     <!--===============================================================================================-->
     <script src="~/Login_v1/js/main.js"></script>
-
-
-
 </body>
 </html>
+

@@ -2,12 +2,14 @@
 using BusinessLayer.Abstract.AbstractUOW;
 using BusinessLayer.Concrete;
 using BusinessLayer.Concrete.ConcreteUOW;
-using BusinessLayer.ValidationRules;
+using BusinessLayer.ValidationRules.AnnouncementValidationRules;
+using BusinessLayer.ValidationRules.AppUserValidationRules;
 using BusinessLayer.ValidationRules.ContactUsValidationRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.EntityFramework;
 using DataAccessLayer.UnitOfWork;
 using DTOLayer.DTOs.AnnouncementDTOs;
+using DTOLayer.DTOs.AppUserDTOs;
 using DTOLayer.DTOs.ContactDTOs;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
@@ -69,6 +71,8 @@ namespace BusinessLayer.Container
         {
             services.AddTransient<IValidator<AnnouncementAddDTO>, AnnouncementValidator>();
             services.AddTransient<IValidator<SendMessageDTO>, SendContactUsValidator>();
+            services.AddTransient<IValidator<AppUserLoginDTO>, AppUserSignInValidator>();
+            services.AddTransient<IValidator<AppUserRegisterDTO>, AppUserRegisterValidator>();
         }
     }
 }

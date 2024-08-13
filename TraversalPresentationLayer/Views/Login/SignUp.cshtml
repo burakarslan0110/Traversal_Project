@@ -1,4 +1,4 @@
-﻿@model Traversal.Models.UserRegisterViewModel
+﻿@model DTOLayer.DTOs.AppUserDTOs.AppUserRegisterDTO
 @{
     Layout = null;
 }
@@ -70,23 +70,24 @@ Author URL: http://w3layouts.com
 						</div>
 						<div class="form-input">
 							<label>Kullanıcı Adınız: </label>
-							<input type="text" asp-for="Username" required />
+							<input type="text" asp-for="Username" required/>
+							<span asp-validation-for="Username" class="text-danger"></span>
 						</div>
 						<div class="form-input">
 							<label>E-Posta Adresiniz: </label>
 							<input type="email" asp-for="EMail" required/>
+							<span asp-validation-for="EMail" class="text-danger"></span>
 						</div>
 						<div class="form-input">
 							<label>Parolanız: </label>
-							<input type="password" asp-for="Password" required />
+							<input type="password" asp-for="Password" required/>
 							<span asp-validation-for="Password" class="text-danger"></span>
 						</div>
 						<div class="form-input">
 							<label>Parola Tekrarı: </label>
-							<input type="password" asp-for="ConfirmPassword" required />
+							<input type="password" asp-for="ConfirmPassword" required/>
 							<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
 						</div>
-
 						<button class="btn">Üye Ol</button>
 					</form>
 					<div class="copy-right text-center">

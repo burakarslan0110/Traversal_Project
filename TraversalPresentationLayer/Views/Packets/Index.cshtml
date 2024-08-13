@@ -1,0 +1,66 @@
+﻿@model List<EntityLayer.Concrete.Destination> 
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<!doctype html>
+<html lang="zxx">
+
+
+<body>
+    <!--header-->
+    <!-- //header -->
+    <!-- about breadcrumb -->
+    <section class="w3l-about-breadcrumb text-left">
+        <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+            <div class="container">
+                <h2 class="title">Tatil Paketleri</h2>
+                <ul class="breadcrumbs-custom-path mt-2">
+                    <li><a href="/Default/Index">Ana Sayfa</a></li>
+                    <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Tatil Paketleri </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- //about breadcrumb -->
+    <!--/pricing-->
+    <section class="w3l-pricinghny">
+        <div class="pricing-inner-info py-5">
+            <div class="container py-lg-4">
+                <!--/pricing-info-grids-->
+                <div class="pricing-info-grids">
+                    <!--/box-->
+                    @foreach(var item in Model)
+                    {
+                        <div class="price-box">
+                            <div class="grid grid-column-2">
+                                <div class="column pr-img-gd">
+                                    <h6 class="pricehead">
+                                        <span class="fa fa-delicious mr-2" aria-hidden="true"></span> @item.City
+                                    </h6>
+                                </div>
+                                <div class="column text-lg-center">
+                                    <p class="price-title">@item.DayNight</p>
+                                </div>
+                                <div class="column price-number text-md-right">
+                                    <h3 class="pricing">
+                                        @item.Price<sup class="pri"></sup><sup class="pri1">$</sup>
+                                    </h3>
+                                    <a href="/Destination/DestinationDetails/@item.DestinationID" class="btn btn-style btn-secondary ml-lg-3">Detaylar</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    
+                    <!--/box-->
+                </div>
+                <!--/pricing-info-grids-->
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>
+
