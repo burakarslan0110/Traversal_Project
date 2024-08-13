@@ -9,14 +9,51 @@
         </div>
         <div class="card-body p-3">
             <p class="text-sm">
-                Traversal üye sistemine hoşgeldiniz. Sol tarafta yer alan menüden yeni rezervasyon oluşturabilmekle beraber geçmiş, aktif ve onaylanmayan rezervasyonlarınızı rezervasyonlarınızı görüntüleyebilirsiniz.
+                Traversal üye sistemine hoşgeldiniz. Sol tarafta yer alan menüden yeni rezervasyon oluşturabilmekle beraber geçmiş, aktif ve onaylanmayan rezervasyonlarınızı görüntüleyebilirsiniz.
             </p>
-            <ul class="list-group">
-                <li class="list-group-item border-0 ps-0  text-sm"><strong class="text-dark">Kullanıcı Adı: </strong>@ViewBag.mUsername</li>
-                <li class="list-group-item border-0 ps-0  text-sm"><strong class="text-dark">Ad Soyad: </strong>@ViewBag.mNameSurname</li>
-                <li class="list-group-item border-0 ps-0  text-sm"><strong class="text-dark">Telefon No: </strong>@ViewBag.mPhoneNumber</li>
-                <li class="list-group-item border-0 ps-0  text-sm"><strong class="text-dark">E-posta: </strong>@ViewBag.mEmail</li>
+            <ul class="list-group profile-info-list">
+                <li class="list-group-item border-0 ps-0 text-sm">
+                    <strong class="text-dark">Kullanıcı Adı: </strong><span>@ViewBag.mUsername</span>
+                </li>
+                <li class="list-group-item border-0 ps-0 text-sm">
+                    <strong class="text-dark">Ad Soyad: </strong><span>@ViewBag.mNameSurname</span>
+                </li>
+                <li class="list-group-item border-0 ps-0 text-sm">
+                    <strong class="text-dark">Telefon No: </strong><span>@ViewBag.mPhoneNumber</span>
+                </li>
+                <li class="list-group-item border-0 ps-0 text-sm">
+                    <strong class="text-dark">E-posta: </strong><span class="email-ellipsis">@ViewBag.mEmail</span>
+                </li>
             </ul>
         </div>
     </div>
 </div>
+<style>
+    .profile-info-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+        .profile-info-list li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .profile-info-list strong {
+            flex: 1;
+        }
+
+        .profile-info-list span {
+            flex: 2;
+            text-align: right; 
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+    .email-ellipsis {
+        max-width: 200px; 
+    }
+
+</style>

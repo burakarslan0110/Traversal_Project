@@ -1,4 +1,4 @@
-﻿@model Traversal.Areas.Member.Models.UserEditViewModel
+﻿@model DTOLayer.DTOs.MemberDTOs.UserEditDTO
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
@@ -23,13 +23,13 @@
         <input type="file" asp-for="ImageFile" />
     </div>
     @Html.Label("Parolanız: ")
-    <input type="text" asp-for="Password" class="form-control" required/>
+    <input type="password" asp-for="Password" class="form-control" required/>
     <span asp-validation-for="Password" class="text-danger"></span>
     <br />
     @Html.Label("Parola tekrar girin: ")
-    <input type="text" asp-for="ConfirmPassword" class="form-control" required/>
+    <input type="password" asp-for="ConfirmPassword" class="form-control" required/>
     <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
     <br />
-    <button class="btn btn-">Bilgileri Güncelle</button>
+    <button class="btn btn-sm btn-outline-dark" onclick="alert('Profil bilgileriniz başarıyla kaydedildi!');">Profili Kaydet</button>
 </form>
 

@@ -1,4 +1,5 @@
-﻿using EntityLayer.Concrete;
+﻿using DTOLayer.DTOs.MemberDTOs;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Traversal.Areas.Member.Models;
@@ -20,16 +21,16 @@ namespace Traversal.Areas.Member.Controllers
         public async Task<IActionResult> Index()
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            UserEditViewModel userEditViewModel = new UserEditViewModel();
-            userEditViewModel.Name = values.Name;
-            userEditViewModel.Surname = values.Surname;
-            userEditViewModel.PhoneNumber = values.PhoneNumber;
-            userEditViewModel.Email = values.Email;
-            return View(userEditViewModel);
+            UserEditDTO userEditdto = new UserEditDTO();
+            userEditdto.Name = values.Name;
+            userEditdto.Surname = values.Surname;
+            userEditdto.PhoneNumber = values.PhoneNumber;
+            userEditdto.Email = values.Email;
+            return View(userEditdto);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(UserEditViewModel p)
+        public async Task<IActionResult> Index(UserEditDTO p)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             if(p.ImageFile != null)
@@ -50,7 +51,7 @@ namespace Traversal.Areas.Member.Controllers
             var result = await _userManager.UpdateAsync(user);
             if (result.Succeeded)
             {
-                return RedirectToAction("SignIn","Login");
+                return RedirectToAction("SignIn","Login", new { area = "" });
             }
             return View(result);
            

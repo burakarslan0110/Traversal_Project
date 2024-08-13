@@ -5,6 +5,7 @@
 }
 
 <h1>Yeni Rezervasyon</h1>
+<br />
 <form method="post">
     <div class="form-group">
         @Html.Label("Lokasyon: ")
@@ -12,7 +13,7 @@
     </div>
     <div class="form-group">
         @Html.Label("Kişi Sayısı: ")
-        <input type ="text" asp-for="PersonCount" class="form-control" />
+        <input type ="number" asp-for="PersonCount" class="form-control" />
     </div>
     <div class="form-group">
         @Html.Label("Tarih: ")
@@ -22,6 +23,6 @@
         @Html.Label("Varsa eklemek istedikleriniz: ")
         <input type="text" asp-for="Description" class="form-control" />
     </div>
-    <button class="btn btn-sm btn-outline-dark" onclick="alert('Rezervasyonunuz başlangıçta onay bekliyor şeklinde alınacaktır.Rezervasyon onaylanma süreci için güncel rezervasyonlarım menüsünü takip etmeyi unutmayın');">Rezervasyon Oluştur</button>
+    <button class="btn btn-sm btn-outline-dark" onclick="alert('Rezervasyonunuz başlangıçta onay bekliyor şeklinde alınacaktır. Rezervasyon onaylanma süreci için güncel rezervasyonlarım menüsünü takip etmeyi unutmayın');">Rezervasyon Oluştur</button>
 </form>
 
