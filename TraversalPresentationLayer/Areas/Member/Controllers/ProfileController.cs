@@ -26,6 +26,7 @@ namespace Traversal.Areas.Member.Controllers
             userEditdto.Surname = values.Surname;
             userEditdto.PhoneNumber = values.PhoneNumber;
             userEditdto.Email = values.Email;
+            userEditdto.ImageURL = values.ImageURL;
             return View(userEditdto);
         }
 
@@ -55,6 +56,18 @@ namespace Traversal.Areas.Member.Controllers
             }
             return View(result);
            
+        }
+
+        public async Task<IActionResult> RemoveProfileImage()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            user.ImageURL = null;
+            var result = await _userManager.UpdateAsync(user);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Dashboard");
+            }
+            return View(result);
         }
     }
 }

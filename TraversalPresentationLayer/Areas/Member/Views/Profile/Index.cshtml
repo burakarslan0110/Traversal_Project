@@ -18,10 +18,22 @@
     @Html.Label("Telefon Numarası: ")
     <input type="tel" asp-for="PhoneNumber" class="form-control" />
     <br />
-    <div class="form-group">
+    <div class="form-group col-auto">
+        @if(Model.ImageURL != null)
+        {
+            <div class="avatar avatar-xl position-relative">
+                <img src="/UserImages/@Model.ImageURL" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+            </div>
+        }
+        else
+        {
+            <p>Profil Fotoğrafı Yok</p>
+        }
         <label>Profil Görseli Seçin: </label>
         <input type="file" asp-for="ImageFile" />
     </div>
+    <a href="/Member/Profile/RemoveProfileImage" class="btn btn-sm btn-outline-dark">Profili Görselini Kaldır</a>
+    <br />
     @Html.Label("Parolanız: ")
     <input type="password" asp-for="Password" class="form-control" required/>
     <span asp-validation-for="Password" class="text-danger"></span>
@@ -30,6 +42,6 @@
     <input type="password" asp-for="ConfirmPassword" class="form-control" required/>
     <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
     <br />
-    <button class="btn btn-sm btn-outline-dark" onclick="alert('Profil bilgileriniz başarıyla kaydedildi!');">Profili Kaydet</button>
+    <button class="btn btn-success");">Profili Kaydet</button>
 </form>
 
