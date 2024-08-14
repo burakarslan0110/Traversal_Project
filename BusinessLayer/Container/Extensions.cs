@@ -5,12 +5,14 @@ using BusinessLayer.Concrete.ConcreteUOW;
 using BusinessLayer.ValidationRules.AnnouncementValidationRules;
 using BusinessLayer.ValidationRules.AppUserValidationRules;
 using BusinessLayer.ValidationRules.ContactUsValidationRules;
+using BusinessLayer.ValidationRules.MemberValidationRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.EntityFramework;
 using DataAccessLayer.UnitOfWork;
 using DTOLayer.DTOs.AnnouncementDTOs;
 using DTOLayer.DTOs.AppUserDTOs;
 using DTOLayer.DTOs.ContactDTOs;
+using DTOLayer.DTOs.MemberDTOs;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -73,6 +75,7 @@ namespace BusinessLayer.Container
             services.AddTransient<IValidator<SendMessageDTO>, SendContactUsValidator>();
             services.AddTransient<IValidator<AppUserLoginDTO>, AppUserSignInValidator>();
             services.AddTransient<IValidator<AppUserRegisterDTO>, AppUserRegisterValidator>();
+            services.AddTransient<IValidator<UserEditDTO>, MemberProfileValidator>();
         }
     }
 }

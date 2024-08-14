@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BusinessLayer", "BusinessLa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TraversalPresentationLayer", "TraversalPresentationLayer\TraversalPresentationLayer.csproj", "{02359A50-0C2A-4130-9947-74E9905D56E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DTOLayer", "DTOLayer\DTOLayer.csproj", "{1D48D501-4FF6-4C07-ABC7-EFF6E5794214}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTOLayer", "DTOLayer\DTOLayer.csproj", "{1D48D501-4FF6-4C07-ABC7-EFF6E5794214}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

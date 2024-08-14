@@ -8,21 +8,31 @@
 <form method="post" enctype="multipart/form-data">
     @Html.Label("Adınız: ")
     <input type="text" asp-for="Name" class="form-control" required />
+    <span asp-validation-for="Name" class="text-danger"></span>
     <br />
     @Html.Label("Soyadınız: ")
-    <input type="text" asp-for="Surname" class="form-control" required/>
+    <input type="text" asp-for="Surname" class="form-control" required />
+    <span asp-validation-for="Surname" class="text-danger"></span>
     <br />
     @Html.Label("E-posta Adresiniz: ")
-    <input type="text" asp-for="Email" class="form-control" required/>
-    <br />
+    <input type="text" asp-for="Email" class="form-control" required />
+    <span asp-validation-for="Email" class="text-danger"></span>
+    <div class="text-danger">
+        <ul class="error-list">
+            
+            <li>@Html.ValidationSummary(true, "", new { @class = "text-danger" })</li>
+            
+        </ul>
+    </div>
     @Html.Label("Telefon Numarası: ")
-    <input type="tel" asp-for="PhoneNumber" class="form-control" />
+    <input type="tel" asp-for="PhoneNumber" class="form-control" pattern="[0-9]{3} [0-9]{3} [0-9]{4}" maxlength="12" />
+    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
     <br />
     <div class="form-group col-auto">
-        @if(Model.ImageURL != null)
+        @if (ViewBag.ImageURL != null)
         {
             <div class="avatar avatar-xl position-relative">
-                <img src="/UserImages/@Model.ImageURL" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                <img src="/UserImages/@ViewBag.ImageURL" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
             </div>
         }
         else
@@ -35,13 +45,26 @@
     <a href="/Member/Profile/RemoveProfileImage" class="btn btn-sm btn-outline-dark">Profili Görselini Kaldır</a>
     <br />
     @Html.Label("Parolanız: ")
-    <input type="password" asp-for="Password" class="form-control" required/>
+    <input type="password" asp-for="Password" class="form-control" required />
     <span asp-validation-for="Password" class="text-danger"></span>
     <br />
     @Html.Label("Parola tekrar girin: ")
-    <input type="password" asp-for="ConfirmPassword" class="form-control" required/>
+    <input type="password" asp-for="ConfirmPassword" class="form-control" required />
     <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
     <br />
-    <button class="btn btn-success");">Profili Kaydet</button>
+    <button class="btn btn-success">Profili Kaydet</button>
 </form>
+<style>
+
+    .text-danger ul {
+        list-style-type: none; /* Madde işaretlerini kaldırır */
+        padding-left: 0; /* Sol boşluğu kaldırır */
+        margin: 0; /* Üst ve alt boşlukları kaldırır */
+    }
+
+    .text-danger li {
+        margin-bottom: 0.5rem; /* Liste elemanları arasında küçük boşluk bırakır */
+    }
+
+</style>
 

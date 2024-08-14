@@ -22,11 +22,13 @@ namespace Traversal.Areas.Member.Controllers
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
             UserEditDTO userEditdto = new UserEditDTO();
+            userEditdto.Id = values.Id;
             userEditdto.Name = values.Name;
             userEditdto.Surname = values.Surname;
             userEditdto.PhoneNumber = values.PhoneNumber;
             userEditdto.Email = values.Email;
             userEditdto.ImageURL = values.ImageURL;
+            ViewBag.ImageURL = values.ImageURL;
             return View(userEditdto);
         }
 
@@ -43,18 +45,34 @@ namespace Traversal.Areas.Member.Controllers
                 var stream = new FileStream(savelocation, FileMode.Create);
                 await p.ImageFile.CopyToAsync(stream);
                 user.ImageURL = imagename;
+                ViewBag.ImageURL = user.ImageURL;
             }
-            user.Name = p.Name;
-            user.Surname = p.Surname;
-            user.PhoneNumber = p.PhoneNumber;
-            user.Email = p.Email;
-            user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, p.Password);
-            var result = await _userManager.UpdateAsync(user);
-            if (result.Succeeded)
+
+            if (user.Email != p.Email)
             {
-                return RedirectToAction("SignIn","Login", new { area = "" });
+                var emailExists = await _userManager.FindByEmailAsync(p.Email);
+                if (emailExists != null)
+                {
+                    ModelState.AddModelError(string.Empty,"Bu e-posta adresi başka bir kullanıcı tarafından kullanılmaktadır!");
+                }
             }
-            return View(result);
+
+            if (ModelState.IsValid)
+            {
+                user.Name = p.Name;
+                user.Surname = p.Surname;
+                user.PhoneNumber = p.PhoneNumber;
+                user.Email = p.Email;
+                ViewBag.ImageURL = user.ImageURL;
+                user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, p.Password);
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("SignIn", "Login", new { area = "" });
+                }
+            }
+            ViewBag.ImageURL = user.ImageURL;
+            return View(p);
            
         }
 
@@ -62,6 +80,7 @@ namespace Traversal.Areas.Member.Controllers
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             user.ImageURL = null;
+            ViewBag.ImageURL = user.ImageURL;
             var result = await _userManager.UpdateAsync(user);
             if (result.Succeeded)
             {

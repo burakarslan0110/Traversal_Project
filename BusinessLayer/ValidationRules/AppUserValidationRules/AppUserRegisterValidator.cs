@@ -20,6 +20,7 @@ namespace BusinessLayer.ValidationRules.AppUserValidationRules
             RuleFor(x => x.Surname).NotEmpty().WithMessage("Soyad alanı boş geçilemez!");
             RuleFor(x => x.Username).NotEmpty().WithMessage("Kullanıcı adı alanı boş geçilemez!");
             RuleFor(x => x.EMail).NotEmpty().WithMessage("E-posta alanı boş geçilemez!");
+
             RuleFor(x => x.Password).NotEmpty().WithMessage("Parola alanı boş geçilemez!").
                                      Matches(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$")
             .WithMessage("Parola en az bir büyük harf, bir küçük harf ve bir rakam içermelidir!").
