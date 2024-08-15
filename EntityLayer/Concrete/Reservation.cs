@@ -16,6 +16,7 @@ namespace EntityLayer.Concrete
         public string Description { get; set; }
         public string Status { get; set; }   
         public int DestinationID { get; set; }
+
         public Destination Destination { get; set; }
 
     }

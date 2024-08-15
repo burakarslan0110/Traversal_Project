@@ -7,6 +7,7 @@ using TraversalPresentationLayer.Models;
 namespace TraversalPresentationLayer.Areas.Admin.Controllers
 {
     [Area("Admin")]
+
     public class ExcelController : Controller
     {
         public IActionResult Index()

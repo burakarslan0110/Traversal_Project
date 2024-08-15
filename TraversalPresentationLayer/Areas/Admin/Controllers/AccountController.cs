@@ -7,7 +7,7 @@ using TraversalPresentationLayer.Areas.Admin.Models;
 namespace TraversalPresentationLayer.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [AllowAnonymous]
+
     public class AccountController : Controller
     {
         private readonly IAccountService _accountService;

@@ -1,0 +1,59 @@
+﻿@using EntityLayer.Concrete
+@model List<Reservation>
+@{
+    ViewData["Title"] = "MyRejectedReservation";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h1>Reddedilen Rezervasyonlarım</h1>
+<br />
+@if(Model.Any())
+{
+    <div class="card">
+        <div class="table-responsive">
+            <div class="card-header pb-0">
+            </div>
+            <table class="table align-items-center mb-0">
+                <thead>
+                    <tr>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">#</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Lokasyon</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kişi Sayısı</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Rezervasyon Tarihi</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Durum</th>
+                        <th class="text-secondary opacity-7"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="align-middle text-center text-sm">
+                                <p class="text-xs font-weight-bold mb-0">@item.ReservationID</p>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <p class="text-xs font-weight-bold mb-0">@item.Destination.City</p>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <p class="text-xs font-weight-bold mb-0">@item.PersonCount</p>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <span class="text-secondary text-xs font-weight-bold">@item.ReservationDate</span>
+                            </td>
+                            <td class="align-middle text-center text-sm">
+                                <span class="text-secondary text-xs font-weight-bold">@item.Status</span>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <h2>Reddedilen rezervasyon kaydınız bulunmamaktadır!</h2>
+
+}
+
+

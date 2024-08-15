@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace TraversalPresentationLayer.Areas.Admin.Controllers
 {
     [Area("Admin")]
+
     public class DestinationController : Controller
     {
         private readonly IDestinationService _destinationService;

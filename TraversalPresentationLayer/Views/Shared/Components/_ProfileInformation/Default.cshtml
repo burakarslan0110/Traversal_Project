@@ -19,7 +19,14 @@
                     <strong class="text-dark">Ad Soyad: </strong><span>@ViewBag.mNameSurname</span>
                 </li>
                 <li class="list-group-item border-0 ps-0 text-sm">
-                    <strong class="text-dark">Telefon No: </strong><span>@ViewBag.mPhoneNumber</span>
+                    @if (@ViewBag.mPhoneNumber != null)
+                    {
+                        <strong class="text-dark">Telefon No: </strong><span>@ViewBag.mPhoneNumber</span>
+                    }
+                    else
+                    {
+                        <strong class="text-dark">Telefon No: </strong><span>-</span>
+                    }
                 </li>
                 <li class="list-group-item border-0 ps-0 text-sm">
                     <strong class="text-dark">E-posta: </strong><span class="email-ellipsis">@ViewBag.mEmail</span>

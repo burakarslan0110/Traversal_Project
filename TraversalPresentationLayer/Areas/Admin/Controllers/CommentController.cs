@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace TraversalPresentationLayer.Areas.Admin.Controllers
 {
     [Area("Admin")]
+
     public class CommentController : Controller
     {
         private readonly ICommentService _commentService;

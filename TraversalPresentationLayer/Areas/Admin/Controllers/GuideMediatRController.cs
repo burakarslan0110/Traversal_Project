@@ -8,6 +8,7 @@ using TraversalPresentationLayer.CQRS.Queries.GuideQueries;
 namespace TraversalPresentationLayer.Areas.Admin.Controllers
 {
     [Area("Admin")]
+
     public class GuideMediatRController : Controller
     {
         private readonly IMediator _mediator;

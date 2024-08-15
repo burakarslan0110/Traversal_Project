@@ -28,7 +28,7 @@ namespace TraversalPresentationLayer.Areas.Admin.Controllers
         {
             var values = _appuserService.TGetByID(id);
             _appuserService.TDelete(values);
-            return RedirectToAction("User","Admin");
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public IActionResult EditUser(int id)

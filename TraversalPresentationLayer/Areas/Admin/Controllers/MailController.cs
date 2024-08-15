@@ -6,6 +6,7 @@ using TraversalPresentationLayer.Models;
 namespace TraversalPresentationLayer.Areas.Admin.Controllers
 {
     [Area("Admin")]
+
     public class MailController : Controller
     {
         [HttpGet]

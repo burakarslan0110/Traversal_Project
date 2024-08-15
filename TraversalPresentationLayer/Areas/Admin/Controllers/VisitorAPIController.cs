@@ -7,7 +7,7 @@ using TraversalPresentationLayer.Areas.Admin.Models;
 namespace TraversalPresentationLayer.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [AllowAnonymous]
+
     public class VisitorAPIController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

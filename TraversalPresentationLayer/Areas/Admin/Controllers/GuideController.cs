@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace TraversalPresentationLayer.Areas.Admin.Controllers
 {
     [Area("Admin")]
+
     public class GuideController : Controller
     {
         private readonly IGuideService _guideService;

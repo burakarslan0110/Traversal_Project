@@ -30,10 +30,10 @@ namespace Traversal.Areas.Member.Controllers
             var valueslist = _reservationService.GetListWithReservationByApproved(values.Id);
             return View(valueslist);
         }
-        public async Task<IActionResult> MyOldReservation()
+        public async Task<IActionResult> MyRejectedReservation()
         {
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            var valueslist = _reservationService.GetListWithReservationByOld(values.Id);
+            var valueslist = _reservationService.GetListWithReservationByRejected(values.Id);
             return View(valueslist);
         }
         public async Task<IActionResult> MyApprovalReservation()

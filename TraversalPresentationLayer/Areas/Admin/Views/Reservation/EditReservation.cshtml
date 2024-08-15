@@ -1,0 +1,27 @@
+﻿@model EntityLayer.Concrete.Reservation
+@{
+    ViewData["Title"] = "EditReservation";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Rehber Düzenleme</h1>
+<form method="post">
+    @Html.HiddenFor(x => x.ReservationID)
+    @Html.HiddenFor(x => x.AppUserID)
+    <div class="form-group">
+        @Html.Label("Lokasyon: ")
+        @Html.DropDownListFor(x => x.DestinationID, (List<SelectListItem>)ViewBag.RDL, new { @class = "form-control" })
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Kişi Sayısı: ")
+        <input type="number" asp-for="PersonCount" class="form-control" />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Rezervasyon Tarihi: ")
+        <input type="date" asp-for="ReservationDate" class="form-control" />
+    </div>
+    <button class="btn btn-sm btn-outline-dark" onclick="alert('Rezervasyon başarıyla düzenlendi!');">Rezervasyonu Kaydet</button>
+</form>
+

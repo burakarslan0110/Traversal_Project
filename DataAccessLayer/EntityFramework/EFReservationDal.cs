@@ -21,11 +21,11 @@ namespace DataAccessLayer.EntityFramework
             }
         }
 
-        public List<Reservation> GetListWithReservationByOld(int id)
+        public List<Reservation> GetListWithReservationByRejected(int id)
         {
             using (var context = new Context())
             {
-                return context.Reservations.Include(x => x.Destination).Where(x => x.Status == "Geçmiş Rezervasyon" && x.AppUserID == id).ToList();
+                return context.Reservations.Include(x => x.Destination).Where(x => x.Status == "Onaylanmadı" && x.AppUserID == id).ToList();
             }
         }
 
@@ -33,7 +33,45 @@ namespace DataAccessLayer.EntityFramework
         {
             using (var context = new Context())
             {
-                return context.Reservations.Include(x=>x.Destination).Where(x=>x.Status=="Onay Bekliyor" && x.AppUserID == id).ToList();
+                return context.Reservations.Include(x => x.Destination).Where(x => x.Status == "Onay Bekliyor" && x.AppUserID == id).ToList();
+            }
+        }
+
+        public List<Reservation> GetAllReservation()
+        {
+            using (var context = new Context())
+            {
+                return context.Reservations.Include(x => x.Destination).Include(x => x.AppUser).ToList();
+            }
+        }
+
+        public void ApproveReservation(int id)
+        {
+            using (var context = new Context())
+            {
+                var values = context.Reservations.Find(id);
+                values.Status = "Onaylandı";
+                context.SaveChanges();
+            }
+        }
+
+        public void RejectReservation(int id)
+        {
+            using (var context = new Context())
+            {
+                var values = context.Reservations.Find(id);
+                values.Status = "Onaylanmadı";
+                context.SaveChanges();
+            }
+        }
+
+        public void WaitingApproveReservation(int id)
+        {
+            using (var context = new Context())
+            {
+                var values = context.Reservations.Find(id);
+                values.Status = "Onay Bekliyor";
+                context.SaveChanges();
             }
         }
     }

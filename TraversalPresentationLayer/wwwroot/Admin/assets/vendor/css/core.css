@@ -55,6 +55,30 @@
   box-sizing: border-box;
 }
 
+.announcement-banner {
+        overflow: hidden;
+        width: 300px; /* Barın genişliği kadar */
+        position: relative;
+        margin-left: 10px;
+    }
+
+    #announcement-text {
+        position: absolute;
+        white-space: nowrap;
+        display: inline-block;
+        padding-left: 100%; /* Yazının başlangıç konumu */
+        animation: scrollText 10s linear infinite; /* Kayan metin animasyonu */
+    }
+
+    @keyframes scrollText {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
 :root {
   font-size: var(--bs-root-font-size);
 }

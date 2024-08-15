@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace TraversalPresentationLayer.Areas.Admin.Controllers
 {
     [Area("Admin")]
+
     public class PDFReportController : Controller
     {
         public IActionResult Index()
