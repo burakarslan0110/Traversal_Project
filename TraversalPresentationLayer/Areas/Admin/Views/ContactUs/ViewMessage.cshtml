@@ -1,0 +1,17 @@
+﻿@model ContactUs
+@{
+    ViewData["Title"] = "ViewMessagge";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>@Model.NameSurname İsimli Kullanıcının Mesajı</h1>
+<form>
+    @Html.HiddenFor(x=>x.ContactUsID)
+    <div class="form-group">
+        @Html.Label("Mesaj: ")
+        @Html.TextAreaFor(x => x.MessageBody, new { @class = "form-control", @rows = 5, @cols = 50, @readonly = "readonly" })
+    </div>
+   <br />
+    <a href="/Admin/ContactUs/" class="btn btn-sm btn-outline-dark">Mesaj Listesine Geri Dön</a>
+</form>
+

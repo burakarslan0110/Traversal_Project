@@ -41,7 +41,7 @@ namespace TraversalPresentationLayer.Areas.Admin.Controllers
                     Title = model.Title,
                     Date = Convert.ToDateTime(DateTime.Now.ToShortDateString())
                 });
-                return RedirectToAction("Announcement","Admin");
+                return RedirectToAction("Index");
             }
             return View();
         }
@@ -50,7 +50,7 @@ namespace TraversalPresentationLayer.Areas.Admin.Controllers
         {
             var values = _announcementService.TGetByID(id);
             _announcementService.TDelete(values);
-            return RedirectToAction("Announcement", "Admin");
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -71,7 +71,7 @@ namespace TraversalPresentationLayer.Areas.Admin.Controllers
                     Content = model.Content,
                     Date = Convert.ToDateTime(DateTime.Now.ToShortDateString())
                 });
-                return RedirectToAction("Announcement", "Admin");
+                return RedirectToAction("Index");
             }
             return View(model);
         }

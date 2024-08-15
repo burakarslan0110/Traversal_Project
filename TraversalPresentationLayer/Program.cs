@@ -73,6 +73,7 @@ builder.Services.AddMvc();
 builder.Services.PostConfigure<CookieAuthenticationOptions>(IdentityConstants.ApplicationScheme, options =>
 {
     options.LoginPath = "/Login/SignIn";
+    options.LogoutPath = "/Login/Logout";
 });
 
 var app = builder.Build();

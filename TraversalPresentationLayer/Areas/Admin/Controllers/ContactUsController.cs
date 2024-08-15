@@ -19,5 +19,19 @@ namespace TraversalPresentationLayer.Areas.Admin.Controllers
             var values = _contactUsService.TGetList();
             return View(values);
         }
+
+        [HttpGet]
+        public IActionResult ViewMessage(int id)
+        {
+            var values = _contactUsService.TGetByID(id);
+            return View(values);
+        }
+
+        public IActionResult DeleteMessage(int id)
+        {
+            var values = _contactUsService.TGetByID(id);
+            _contactUsService.TDelete(values);
+            return RedirectToAction("Index");
+        }
     }
 }

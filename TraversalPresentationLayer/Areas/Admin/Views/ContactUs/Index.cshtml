@@ -28,8 +28,8 @@
                     <td>@item.NameSurname</td>
                     <td>@item.Subject</td>
                     <td><span class="badge bg-label-primary me-1">@item.MessageDate.ToShortDateString()</span></td>
-                    <td><a href="#" class="btn btn-outline-dark">Mesajı Görüntüle</a></td>
-                    <td><a href="#" class="btn btn-outline-danger">Mesajı Sil</a></td>
+                    <td><a href="/Admin/ContactUs/ViewMessage/@item.ContactUsID" class="btn btn-outline-dark">Mesajı Görüntüle</a></td>
+                    <td><a href="/Admin/ContactUs/DeleteMessage/@item.ContactUsID" class="btn btn-outline-danger">Mesajı Sil</a></td>
                 </tr>
             }
         </tbody>

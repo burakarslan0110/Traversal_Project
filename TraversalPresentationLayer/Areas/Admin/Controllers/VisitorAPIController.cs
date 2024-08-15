@@ -46,7 +46,7 @@ namespace TraversalPresentationLayer.Areas.Admin.Controllers
             var responseMessage = await client.PostAsync("http://localhost:5076/api/Visitor", content);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("VisitorAPI", "Admin");
+                return RedirectToAction("Index");
             }
             return View();
         }
@@ -57,7 +57,7 @@ namespace TraversalPresentationLayer.Areas.Admin.Controllers
             var responseMessage = await client.DeleteAsync($"http://localhost:5076/api/Visitor/{id}"); 
             if(responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("VisitorAPI", "Admin");
+                return RedirectToAction("Index");
             }
             return View();
         }
@@ -85,7 +85,7 @@ namespace TraversalPresentationLayer.Areas.Admin.Controllers
             var responseMessage = await client.PutAsync("http://localhost:5076/api/Visitor", content);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("VisitorAPI", "Admin");
+                return RedirectToAction("Index");
             }
             return View();
         }

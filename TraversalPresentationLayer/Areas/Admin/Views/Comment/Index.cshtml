@@ -22,7 +22,7 @@
                 {
                     <tr>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@item.CommentID</strong></td>
-                        <td>@item.CommentUser</td>
+                    <td>@item.AppUser.Name @item.AppUser.Surname</td>
                         <td>@item.Destination.City</td>
                         <td><span class="badge bg-label-primary me-1">@Convert.ToDateTime(item.CommentDate).ToShortDateString()</span></td>
                         <td>

@@ -26,7 +26,7 @@ namespace TraversalPresentationLayer.Areas.Admin.Controllers
         {
             var values = _commentService.TGetByID(id);
             _commentService.TDelete(values);
-            return RedirectToAction("Comment","Admin");
+            return RedirectToAction("Index");
         }
     }
 }
