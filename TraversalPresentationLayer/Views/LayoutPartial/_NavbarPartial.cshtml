@@ -37,12 +37,22 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/Contact/Index">İletişim</a>
                     </li>
+                    <li class="nav-item">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="/Member/Dashboard/" class="nav-link" style="color:red">
+                                Üye Profili: @User.Identity.Name
+                            </a>
+                        }
+                    </li>
+                    
 
                 </ul>
             </div>
             <div class="d-lg-block d-none">
                 <a href="/Login/SignIn" class="btn btn-style btn-secondary">Rezervasyon Yap</a>
             </div>
+
             <!-- toggle switch for light and dark theme -->
             <div class="mobile-position">
                 <nav class="navigation">
@@ -58,6 +68,29 @@
                 </nav>
             </div>
             <!-- //toggle switch for light and dark theme -->
+            
         </nav>
+        <form id="logoutForm" action="/Login/Logout" method="post" style="display: none;">
+            @Html.AntiForgeryToken()
+        </form>
     </div>
+    <script>
+        document.getElementById("logoutLink").addEventListener("click", function (event) {
+            event.preventDefault();
+            document.getElementById("logoutForm").submit();
+        });
+    </script>
 </header>
+<style>
+    .dropdown {
+        font-size: 10px; /* Yazı boyutunu ayarlayarak dropdown'ı küçültebilirsin */
+        padding: 5px 10px; /* İç dolgu alanını ayarlayarak dropdown'ın boyutunu ayarlayabilirsin */
+        width: 100px; /* Dropdown genişliğini ayarlamak için */
+    }
+
+    /* Dropdown seçeneklerinin boyutunu ayarlamak için */
+    .dropdown-menu {
+        font-size: 10px; /* Yazı boyutunu ayarlayarak seçenekleri küçültebilirsin */
+        padding: 5px; /* Seçeneklerin iç dolgusunu ayarlamak için */
+    }
+</style>

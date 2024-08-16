@@ -57,6 +57,10 @@ namespace Traversal.Controllers
 		[HttpGet]
 		public IActionResult SignIn()
 		{
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Dashboard", new { area = "Member" });
+            }
 			return View();
 		}
 

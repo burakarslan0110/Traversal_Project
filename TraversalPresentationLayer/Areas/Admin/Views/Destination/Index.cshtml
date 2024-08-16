@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
 }
 
 <div class="card">
@@ -20,8 +21,9 @@
         <tbody class="table-border-bottom-0">
             @foreach (var item in Model)
             {
+                count++;
                 <tr>
-                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@item.DestinationID</strong></td>
+                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@count</strong></td>
                     <td>@item.City</td>
                     <td>@item.Price $</td>
                     <td><span class="badge bg-label-primary me-1">@item.Capacity</span></td>

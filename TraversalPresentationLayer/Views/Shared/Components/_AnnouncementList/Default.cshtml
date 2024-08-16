@@ -1,0 +1,28 @@
+﻿@using EntityLayer.Concrete
+@model List<Announcement>
+<div class="col-12 col-xl-4">
+    <div class="card h-100">
+        <div class="card-header pb-0 p-3">
+            <h6 class="mb-0">Duyurular</h6>
+        </div>
+        <div class="card-body p-3">
+            <ul class="list-group">
+                @foreach (var item in Model)
+                {
+                    <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                        <div class="d-flex align-items-start flex-column justify-content-center">
+                            <h6 class="mb-0 text-sm">
+                                <a href="/Member/Announcement/Index/@item.AnnouncementID" style="color: black; text-decoration: none;"
+                                   onmouseover="this.style.color='red';"
+                                   onmouseout="this.style.color='black';">
+                                    📢 @item.Title (@item.Date.ToShortDateString())
+                                </a>
+                            </h6>
+                           
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

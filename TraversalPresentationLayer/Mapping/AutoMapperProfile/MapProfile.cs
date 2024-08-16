@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DTOLayer.DTOs.AdminDTOs;
 using DTOLayer.DTOs.AnnouncementDTOs;
 using DTOLayer.DTOs.AppUserDTOs;
 using DTOLayer.DTOs.ContactDTOs;
@@ -13,6 +14,8 @@ namespace TraversalPresentationLayer.Mapping.AutoMapperProfile
                 CreateMap<AppUserRegisterDTO, AppUser>().ReverseMap();
 
                 CreateMap<AppUserLoginDTO, AppUser>().ReverseMap();
+
+                CreateMap<EditUserDTO, AppUser>().ReverseMap();
 
                 CreateMap<AnnouncementListDTO, Announcement>().ReverseMap();
 

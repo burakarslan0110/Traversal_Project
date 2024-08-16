@@ -58,23 +58,23 @@ namespace TraversalPresentationLayer.Areas.Admin.Controllers
         public IActionResult EditGuide(Guide guide)
         {
             _guideService.TUpdate(guide);
-            return RedirectToAction("Guide", "Admin");
+            return RedirectToAction("Index");
         }
         public IActionResult ChangeToTrue(int id)
         {
             _guideService.TChangeToTrueByGuide(id);
-            return RedirectToAction("Guide", "Admin");
+            return RedirectToAction("Index");
         }
         public IActionResult ChangeToFalse(int id)
         {
             _guideService.TChangeToFalseByGuide(id);
-            return RedirectToAction("Guide", "Admin");
+            return RedirectToAction("Index");
         }
         public IActionResult DeleteGuide(int id)
         {
             var values = _guideService.TGetByID(id);
             _guideService.TDelete(values);
-            return RedirectToAction("Guide", "Admin");
+            return RedirectToAction("Index");
         }
 
     }

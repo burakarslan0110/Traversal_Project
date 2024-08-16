@@ -4,27 +4,26 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-@foreach (var item in Model)
-{
-    <div class="card">
-        <h4 class="card-header">Rezervasyonlar</h4>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Rezerve No</th>
-                    <th>Lokasyon</th>
-                    <th>Ad Soyad</th>
-                    <th>Kullanıcı Adı</th>
-                    <th>Kişi Sayısı</th>
-                    <th>Rezervasyon Tarihi</th>
-                    <th>Fiyat</th>
-                    <th>Durum</th>
-                    <th>İşlemler</th>
-                </tr>
-            </thead>
-            <tbody class="table-border-bottom-0">
+<div class="card">
+    <h4 class="card-header">Rezervasyonlar</h4>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Rezerve No</th>
+                <th>Lokasyon</th>
+                <th>Ad Soyad</th>
+                <th>Kullanıcı Adı</th>
+                <th>Kişi Sayısı</th>
+                <th>Rezervasyon Tarihi</th>
+                <th>Fiyat</th>
+                <th>Durum</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody class="table-border-bottom-0">
 
-
+            @foreach (var item in Model)
+            {
                 <tr>
                     <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@item.ReservationID</strong></td>
                     <td>@item.Destination.City</td>
@@ -33,9 +32,18 @@
                     <td><span class="badge bg-label-primary me-1">@item.PersonCount</span></td>
                     <td>@item.ReservationDate.ToShortDateString()</td>
                     <td><span class="badge bg-label-primary me-1">@item.Destination.Price $</span></td>
-                    @if(item.Status=="Onay Bekliyor"){ <td class="text-warning">@item.Status</td> }
-                    else if(item.Status=="Onaylandı"){ <td class="text-success">@item.Status</td> }
-                    else { <td class="text-danger">@item.Status</td> }
+                    @if (item.Status == "Onay Bekliyor")
+                    {
+                        <td class="text-warning">@item.Status</td>
+                    }
+                    else if (item.Status == "Onaylandı")
+                    {
+                        <td class="text-success">@item.Status</td>
+                    }
+                    else
+                    {
+                        <td class="text-danger">@item.Status</td>
+                    }
                     <td>
                         <div class="dropdown">
                             <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -51,9 +59,9 @@
                         </div>
                     </td>
                 </tr>
-            </tbody>
-        </table>
-    </div>
+            }
 
-}
+        </tbody>
+    </table>
+</div>
 
