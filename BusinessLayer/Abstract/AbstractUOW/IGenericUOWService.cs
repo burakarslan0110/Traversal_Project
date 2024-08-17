@@ -8,6 +8,7 @@ namespace BusinessLayer.Abstract.AbstractUOW
 {
     public interface IGenericUOWService<T>
     {
+        List<T> TGetAll();
         void TInsert(T t);
         void TUpdate(T t);
         void TMultiUpdate(List<T> t);

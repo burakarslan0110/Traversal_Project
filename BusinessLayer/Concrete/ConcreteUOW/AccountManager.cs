@@ -22,6 +22,16 @@ namespace BusinessLayer.Concrete.ConcreteUOW
             _uowDal = uowDal;
         }
 
+        public List<Account> TGetAccountWithGuide()
+        {
+            return _accountDal.GetAccountWithGuide();
+        }
+
+        public List<Account> TGetAll()
+        {
+            return _accountDal.GetAll();
+        }
+
         public Account TGetByID(int id)
         {
             return _accountDal.GetByID(id);

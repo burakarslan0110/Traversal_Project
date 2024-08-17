@@ -1,0 +1,21 @@
+﻿@model AccountViewModel
+@{
+    ViewData["Title"] = "SendUOW";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Unit Of Work Personel Prim Transferi</h3>
+
+<form method="post">
+    @Html.Label("Gönderici: ")
+    @Html.DropDownListFor(x => x.SenderID, (List<SelectListItem>)ViewBag.VGDX, new { @class = "form-control" })
+    <br />
+    @Html.Label("Alıcı: ")
+    @Html.DropDownListFor(x => x.ReceiverID, (List<SelectListItem>)ViewBag.VGDX, new { @class = "form-control" })
+    <br />
+    <label>Miktar</label>
+    <input type="number" asp-for="Amount" class="form-control" />
+    <br>
+    <button class="btn btn-outline-primary">Hesaba Aktar</button>
+</form>
+

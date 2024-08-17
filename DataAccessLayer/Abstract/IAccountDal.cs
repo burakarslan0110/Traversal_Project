@@ -9,6 +9,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface IAccountDal : IGenericUOWDal<Account>
     {
-
+        public List<Account> GetAccountWithGuide();
     }
 }

@@ -18,5 +18,6 @@ namespace EntityLayer.Concrete
         public string FacebookURL { get; set; }
         public bool Status { get; set; }
         public List<Destination> Destinations { get; set; }
+        public List<Account> Accounts { get; set; }
     }
 }

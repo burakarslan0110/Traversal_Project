@@ -1,6 +1,7 @@
 ﻿using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol.Plugins;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,30 @@ namespace DataAccessLayer.Concrete
         {
             optionsBuilder.UseSqlServer("server = (localdb)\\MSSQLLocalDB;database=TraversalDB;integrated security=true;");
 
+        }
+
+        public override int SaveChanges()
+        {
+            var newGuide = ChangeTracker.Entries<Guide>()
+                .Where(x => x.State == EntityState.Added)
+                .Select(x => x.Entity)
+                .ToList();
+
+            var result = base.SaveChanges();
+
+            foreach (var guide in newGuide) //sisteme yeni bir rehber eklendiğinde hesap oluşturulacak
+            {
+                Accounts.Add(new Account
+                {
+                    AccountID = guide.GuideID,
+                    GuideID = guide.GuideID,
+                    Balance = 0
+                });
+            }
+
+            base.SaveChanges();
+
+            return result;
         }
 
         public DbSet<About1> Abouts1 { get; set; }

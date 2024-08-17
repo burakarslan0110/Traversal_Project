@@ -1,21 +1,35 @@
-﻿@model AccountViewModel
+﻿@model List<Account>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
 }
 
-<h3>Unit Of Work Personel Prim Transferi</h3>
-
-<form method="post">
-    <label>Gönderici</label>
-    <input type="text" asp-for="SenderID" class="form-control" />
-    <br />
-    <label>Alıcı</label>
-    <input type="text" asp-for="ReceiverID" class="form-control" />
-    <br />
-    <label>Miktar</label>
-    <input type="number" asp-for="Amount" class="form-control" />
-    <br>
-    <button class="btn btn-outline-warning">Hesaba Aktar</button>
-</form>
+<div class="card">
+    <h4 class="card-header">Unit Of Work Personel Prim Listesi</h4>
+    <table class="table table-hover">
+        <thead class="">
+            <tr>
+                <th></th>
+                <th>Hesap No</th>
+                <th>Rehber Adı Soyadı</th>
+                <th>Prim Bakiye</th>
+            </tr>
+        </thead>
+        <tbody class="table-border-bottom-0">
+            @foreach (var item in Model)
+            {
+                count++;
+                <tr>
+                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i><strong>@count</strong></td>
+                    <td>@item.AccountID</td>
+                    <td>@item.Guide.GuideName</td>
+                    <td>@item.Balance TL</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+</br>
+<a href="/Admin/Account/SendUOW/" class="btn btn-outline-primary">Prim Transferi Gerçekleştir</a>
 

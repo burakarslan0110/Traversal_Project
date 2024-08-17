@@ -11,5 +11,7 @@ namespace EntityLayer.Concrete
         public int AccountID { get; set; }
         public string Name { get; set; }
         public decimal Balance { get; set; }
+       public Guide Guide { get; set; }
+       public int GuideID { get; set; }   
     }
 }

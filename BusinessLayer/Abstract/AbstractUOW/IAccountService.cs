@@ -9,6 +9,6 @@ namespace BusinessLayer.Abstract.AbstractUOW
 {
     public interface IAccountService : IGenericUOWService<Account>
     {
-
+        List<Account> TGetAccountWithGuide();
     }
 }

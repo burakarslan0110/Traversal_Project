@@ -2,6 +2,7 @@
 using DataAccessLayer.Concrete;
 using DataAccessLayer.Repository;
 using EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,16 @@ namespace DataAccessLayer.EntityFramework
         {
             
         }
+
+        public List<Account> GetAccountWithGuide()
+        {
+            using (var c = new Context())
+            {
+                return c.Accounts.Include(x => x.Guide).ToList();
+
+            }
+        }
+
+       
     }
 }

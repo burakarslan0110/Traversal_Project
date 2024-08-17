@@ -9,6 +9,7 @@ namespace DataAccessLayer.Abstract
 {
     public interface IGenericUOWDal<T> where T : class
     {
+        List<T> GetAll();
         void Insert(T t);
         void Update(T t);
         void MultiUpdate(List<T> t);
