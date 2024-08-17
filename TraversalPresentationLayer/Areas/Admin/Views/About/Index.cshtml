@@ -1,0 +1,37 @@
+﻿@model EntityLayer.Concrete.About1
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Hakkımda Sayfası Düzenleme</h1>
+<form method="post">
+    @Html.HiddenFor(x => x.About1ID)
+    <div class="form-group">
+        @Html.Label("Başlık 1: ")
+        <input type="text" asp-for="Title1" class="form-control" required />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Açıklama 1: ")
+        @Html.TextAreaFor(x => x.Description1, new { @class = "form-control", @rows = 5, @cols = 50})
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Görsel Bağlantısı: ")
+        <input type="text" asp-for="Image1" class="form-control" required />
+    </div>
+    <br/>
+    <div class="form-group">
+        @Html.Label("Başlık 2: ")
+        <input type="text" asp-for="Title2" class="form-control" required />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Açıklama 2: ")
+        @Html.TextAreaFor(x => x.Description2, new { @class = "form-control", @rows = 5, @cols = 50 })
+    </div>
+    <br />
+    <button class="btn btn-outline-primary" onclick="alert('Açıklama başarıyla kaydedildi!');">Açıklamayı Kaydet</button>
+</form>
+

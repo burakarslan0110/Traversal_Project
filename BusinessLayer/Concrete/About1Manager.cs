@@ -30,7 +30,7 @@ namespace BusinessLayer.Concrete
 
 		public About1 TGetByID(int id)
 		{
-			throw new NotImplementedException();
+			return _about1Dal.GetByID(id);
 		}
 
 		public void TInsert(About1 t)

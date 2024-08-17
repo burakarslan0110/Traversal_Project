@@ -6,10 +6,10 @@
         <div class="ban-content-inf row">
             @if (Model.Count > 0)// ilk değer
             {
-                <div class="maghny-gd-1 col-lg-6">
+                <div class="maghny-gd-1 col-lg-6 post-content">
                     <div class="maghny-grid">
                         <figure class="effect-lily border-radius  m-0">
-                            <img class="img-fluid" src="@Model[0].Image" alt="" />
+                            <img class="img-fluid imgX" src="@Model[0].Image" alt="" style=" width:565.25px; height:565.25px" />
                             <figcaption>
                                 <div>
                                     <h4>@Model[0].Name</h4>
@@ -30,17 +30,17 @@
 
                         if (i < 3)
                         {
-                            imageDivClass = "maghny-gd-1 col-6";
+                            imageDivClass = "maghny-gd-1 col-6 post-content";
                         }
                         else
                         if (i > 2)
                         {
-                            imageDivClass = "maghny-gd-1 col-6 mt-4";
+                            imageDivClass = "maghny-gd-1 col-6 mt-4 post-content";
                         }
                         <div class="@imageDivClass">
                             <div class="maghny-grid">
                                 <figure class="effect-lily border-radius">
-                                    <img class="img-fluid" src="@item.Image" alt="" />
+                                    <img class="img-fluid imgX" src="@item.Image" alt="" style=" width:270px; height:270px" />
                                     <figcaption>
                                         <div>
                                             <h4>@item.Name</h4>
@@ -56,3 +56,20 @@
         </div>
     </div>
 </div>
+<style>
+    .post-content {
+        display: flex; /* Flexbox'ı etkinleştirir */
+        justify-content: center; /* İçeriği yatayda ortalar */
+        align-items: center; /* İçeriği dikeyde ortalar (gerekirse) */
+        height: 100%; /* Gereksinimlerinize göre ayarlayın */
+        text-align: center; /* İçerik metinlerini ortalar */
+    }
+
+    imgX {
+        max-width: 100%; /* Görselin genişliğini kapsayıcının genişliği ile sınırlandırır */
+        max-height: 400px; /* Görselin yüksekliğini sabit bir değere sınırlar */
+        width: auto; /* Genişlik, yükseklikteki orana göre ayarlanır */
+        height: auto; /* Yükseklik, genişlikteki orana göre ayarlanır */
+        object-fit: cover; /* Görseli kapsayıcıya uygun şekilde kırpar ve doldurur */
+    }
+</style>

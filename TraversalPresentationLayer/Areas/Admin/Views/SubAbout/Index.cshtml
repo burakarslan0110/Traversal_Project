@@ -1,0 +1,22 @@
+﻿@model EntityLayer.Concrete.SubAbout
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Alt Hakkında</h1>
+<form method="post">
+    @Html.HiddenFor(x => x.SubAboutID)
+    <div class="form-group">
+        @Html.Label("Başlık: ")
+        <input type="text" asp-for="Title" class="form-control" required />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Açıklama: ")
+        @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @rows = 5, @cols = 5, required = "required" })
+    </div>
+    <br />
+    <button class="btn btn-outline-primary" onclick="alert('Alt hakkında başarıyla düzenlendi');">Alt Hakkında Kısmını Kaydet</button>
+</form>
+

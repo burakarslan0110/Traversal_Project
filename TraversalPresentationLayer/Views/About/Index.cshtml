@@ -33,8 +33,8 @@
                     </p>
                 </div>
                 <div class="row mt-1">
-                    <div class="col-md-9 mx-auto">
-                        <img src="@item.Image1" class="img-fluid" alt="">
+                    <div class="col-md-9 mx-auto post-content">
+                        <img src="@item.Image1" class="img-fluid imgX" alt="">
                     </div>
                 </div>
             </div>
@@ -45,14 +45,14 @@
             <div class="container py-lg-5">
                 <div class="row">
                     <div class="col-lg-6 content-6-left pr-lg-5">
-                        <h6 class="sub-title">Neden Bizi Terih Etmelisiniz?</h6>
+                        <h6 class="sub-title">Neden Bizi Tercih Etmelisiniz?</h6>
                         <h3 class="hny-title">@item.Title2</h3>
                     </div>
                     <div class="col-lg-6 content-6-right mt-lg-0 mt-4">
                         <p class="mb-3">
                             @item.Description2
                         </p>
-                        <a href="/Login/SignUp/" class="btn btn-style btn-primary mt-4">Traversal'e Üye Ol!</a>
+                        <a href="/Login/SignUp/" class="btn btn-style btn-secondary mt-4">Traversal'e Üye Ol!</a>
                     </div>
                 </div>
             </div>
@@ -66,4 +66,24 @@
   <!-- //team -->
 
   <!--/w3l-footer-29-main-->
+
+    <style>
+        .post-content {
+            display: flex; /* Flexbox'ı etkinleştirir */
+            justify-content: center; /* İçeriği yatayda ortalar */
+            align-items: center; /* İçeriği dikeyde ortalar (gerekirse) */
+            height: 100%; /* Gereksinimlerinize göre ayarlayın */
+            text-align: center; /* İçerik metinlerini ortalar */
+        }
+
+        imgX {
+            max-width: 100%; /* Görselin genişliğini kapsayıcının genişliği ile sınırlandırır */
+            max-height: 400px; /* Görselin yüksekliğini sabit bir değere sınırlar */
+            width: auto; /* Genişlik, yükseklikteki orana göre ayarlanır */
+            height: auto; /* Yükseklik, genişlikteki orana göre ayarlanır */
+            object-fit: cover; /* Görseli kapsayıcıya uygun şekilde kırpar ve doldurur */
+        }
+    </style>
 </body>
+
+

@@ -9,5 +9,8 @@ namespace DataAccessLayer.Abstract
 {
 	public interface ITestimonialDal : IGenericDal<Testimonial>
 	{
-	}
+        void ChangeToTrueByTestimonial(int id);
+        void ChangeToFalseByTestimonial(int id);
+
+    }
 }

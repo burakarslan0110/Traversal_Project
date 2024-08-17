@@ -9,5 +9,7 @@ namespace BusinessLayer.Abstract
 {
 	public interface ITestimonialService : IGenericService<Testimonial>
 	{
-	}
+        void TChangeToTrueByTestimonial(int id);
+        void TChangeToFalseByTestimonial(int id);
+    }
 }

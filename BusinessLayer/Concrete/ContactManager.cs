@@ -25,7 +25,7 @@ namespace BusinessLayer.Concrete
 
 		public Contact TGetByID(int id)
 		{
-			throw new NotImplementedException();
+			return _contactDal.GetByID(id);
 		}
 
 		public List<Contact> TGetList()

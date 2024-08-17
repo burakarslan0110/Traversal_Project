@@ -18,8 +18,8 @@
                     if(item.Status == true)
                     {
                         <div class="col-lg-3 col-6 mt-lg-5 mt-4">
-                            <div class="box16">
-                                <a href="#url"><img src="@item.Image" alt="" class="img-fluid" /></a>
+                            <div class="box16 post-content">
+                                <a><img src="@item.Image" alt="" class="img-fluid imgX" /></a>
                                 <div class="box-content">
                                     <h3 class="title"><a href="#url">@item.GuideName</a></h3>
                                     <span class="post">@item.Description</span>
@@ -44,3 +44,20 @@
         </div>
     </div>
 </section>
+<style>
+    .post-content {
+        display: flex; /* Flexbox'ı etkinleştirir */
+        justify-content: center; /* İçeriği yatayda ortalar */
+        align-items: center; /* İçeriği dikeyde ortalar (gerekirse) */
+        height: 100%; /* Gereksinimlerinize göre ayarlayın */
+        text-align: center; /* İçerik metinlerini ortalar */
+    }
+
+    imgX {
+        max-width: 100%; /* Görselin genişliğini kapsayıcının genişliği ile sınırlandırır */
+        max-height: 400px; /* Görselin yüksekliğini sabit bir değere sınırlar */
+        width: auto; /* Genişlik, yükseklikteki orana göre ayarlanır */
+        height: auto; /* Yükseklik, genişlikteki orana göre ayarlanır */
+        object-fit: cover; /* Görseli kapsayıcıya uygun şekilde kırpar ve doldurur */
+    }
+</style>

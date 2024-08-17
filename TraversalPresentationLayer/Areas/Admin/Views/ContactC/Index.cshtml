@@ -1,0 +1,31 @@
+﻿@model EntityLayer.Concrete.Contact
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>İletişim Sayfası Düzenleme</h1>
+<form method="post">
+    @Html.HiddenFor(x => x.ContactID)
+    <div class="form-group">
+        @Html.Label("Açıklama: ")
+        @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @rows = 5, @cols = 50 })
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("E-posta Adresi: ")
+        <input type="email" asp-for="Mail" class="form-control" required />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Telefon No: ")
+        <input type="text" asp-for="Phone" class="form-control" required />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Ofis Adresi: ")
+        @Html.TextAreaFor(x => x.Address, new { @class = "form-control", @rows = 5, @cols = 50 })
+    </div>
+    <br />
+    <button class="btn btn-outline-primary" onclick="alert('İletişim bilgileri başarıyla kaydedildi!');">İletişim Bilgilerini Kaydet</button>
+</form>

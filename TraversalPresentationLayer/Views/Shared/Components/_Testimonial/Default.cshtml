@@ -14,25 +14,28 @@
                 <div id="owl-demo1" class="owl-two owl-carousel owl-theme">
                     @foreach(var item in Model)
                     {
-                        <div class="item">
-                            <div class="testimonial-content">
-                                <div class="testimonial">
-                                    <blockquote>
-                                        <span class="fa fa-quote-left" aria-hidden="true"></span>
-                                        @item.Comment
-                                    </blockquote>
-                                    <div class="testi-des">
-                                        <div class="test-img">
-                                            <img src="@item.ClientImage" class="img-fluid" alt="client-img">
-                                        </div>
-                                        <div class="peopl align-self">
-                                            <h3>@item.Client</h3>
-                                            <p class="indentity">Example City</p>
+                        @if(item.Status==true)
+                        {
+                            <div class="item">
+                                <div class="testimonial-content">
+                                    <div class="testimonial">
+                                        <blockquote>
+                                            <span class="fa fa-quote-left" aria-hidden="true"></span>
+                                            @item.Comment
+                                        </blockquote>
+                                        <div class="testi-des">
+                                            <div class="test-img">
+                                                <img src="@item.ClientImage" class="img-fluid" alt="client-img">
+                                            </div>
+                                            <div class="peopl align-self">
+                                                <h3>@item.Client</h3>
+                                                <p class="indentity">Example City</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                     }
                 </div>
             </div>

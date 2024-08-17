@@ -1,11 +1,10 @@
 ﻿using BusinessLayer.Abstract;
 using EntityLayer.Concrete;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace TraversalPresentationLayer.Controllers
+namespace TraversalPresentationLayer.Areas.Admin.Controllers
 {
-    [AllowAnonymous]
+    [Area("Admin")]
     public class AboutController : Controller
     {
         private readonly IAbout1Service _about1Service;
@@ -15,11 +14,18 @@ namespace TraversalPresentationLayer.Controllers
             _about1Service = about1Service;
         }
 
-     
+        [HttpGet]
         public IActionResult Index()
         {
-           var values = _about1Service.TGetList();
-           return View(values);
+            var values = _about1Service.TGetByID(1);
+            return View(values);
+        }
+
+        [HttpPost]
+        public IActionResult Index(About1 p)
+        {
+            _about1Service.TUpdate(p);
+            return RedirectToAction("Index");
         }
     }
 }

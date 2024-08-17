@@ -11,7 +11,7 @@
             <div class="nav-item d-flex align-items-center">
                 <i class="bx bx-bell fs-4 lh-0"></i>
                 <div class="announcement-banner">
-                    <span id="announcement-text"> @DateTime.Now.ToShortDateString() @DateTime.Now.ToShortTimeString() - Yeni bildirim bulunmamaktadır.</span>
+                    <span id="announcement-text"> @DateTime.Now.ToShortDateString() - Yeni bildirim bulunmamaktadır.</span>
                 </div>
             </div>
         </div>
@@ -36,33 +36,5 @@
         }
     </style>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const announcementText = document.getElementById('announcement-text');
-            const banner = announcementText.parentElement;
 
-            function scrollText() {
-                const bannerWidth = banner.clientWidth;
-                const textWidth = announcementText.scrollWidth;
-                let startPos = bannerWidth;
-                let endPos = -textWidth;
-                let speed = 1; // Hız ayarı
-
-                announcementText.style.left = startPos + 'px'; // Başlangıç konumu
-
-                function step() {
-                    if (parseFloat(announcementText.style.left) <= endPos) {
-                        announcementText.style.left = startPos + 'px';
-                    } else {
-                        announcementText.style.left = parseFloat(announcementText.style.left) - speed + 'px';
-                    }
-                    requestAnimationFrame(step);
-                }
-
-                step();
-            }
-
-            scrollText();
-        });
-    </script>
 </nav>

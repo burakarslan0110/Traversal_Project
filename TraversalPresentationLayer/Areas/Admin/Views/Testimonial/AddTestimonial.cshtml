@@ -1,0 +1,28 @@
+﻿@model EntityLayer.Concrete.Testimonial
+@{
+    ViewData["Title"] = "AddTestimonial";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Yeni Referans Oluşturma</h1>
+<form method="post">
+    <div class="form-group">
+        @Html.Label("Müşteri Ad Soyad: ")
+        <input type="text" asp-for="Client" class="form-control" required />
+        <span asp-validation-for="Client" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Müşteri Yorum: ")
+        <input type="text" asp-for="Comment" class="form-control" required />
+        <span asp-validation-for="Comment" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Müşteri Profil Fotoğrafı: ")
+        <input type="text" asp-for="ClientImage" class="form-control" />
+    </div>
+    <br />
+    <button class="btn btn-outline-primary" onclick="alert('Yeni referans kaydı başarıyla oluşturuldu!')">Referans Oluştur</button>
+</form>
+
