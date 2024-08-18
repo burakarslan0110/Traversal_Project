@@ -30,9 +30,8 @@ builder.Services.AddLogging(x =>
 });
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>();
+builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddTokenProvider<DataProtectorTokenProvider<AppUser>>(TokenOptions.DefaultProvider).AddEntityFrameworkStores<Context>();
 builder.Services.AddDbContext<Context>();
-
 builder.Services.AddHttpClient();
 
 //CQRS Mimarisinin Scope'larý

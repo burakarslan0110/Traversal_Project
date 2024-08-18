@@ -48,7 +48,7 @@
                 <div class="d-flex justify-content-between align-items-center pt-4 mt-5 text-center">
                     <div class="text-lg-left">
                         <p>
-                            &copy;@DateTime.Now.Year Tüm hakları saklıdır. Design by <a href="https://w3layouts.com/" target="_blank">W3layouts</a> - Edited by <a href="https://burakarslan.me" target="_blank">Burak Arslan</a>
+                            &copy;@DateTime.Now.Year Tüm hakları saklıdır. Edited by <a href="https://burakarslan.me" target="_blank">Burak Arslan</a>
                         </p>
                     </div>
                     <div class="mt-lg-0 mt-3">
@@ -66,7 +66,6 @@
                                 <a href="#twitter"><span class="fa fa-twitter" aria-hidden="true"></span></a>
                             </li>
                             <li>
-                                <a href="#github"><span class="fa fa-github" aria-hidden="true"></span></a>
                             </li>
                         </ul>
                     </div>
@@ -74,38 +73,224 @@
             </div>
         </div>
 
-        <!-- move top -->
-        <button onclick="topFunction()" id="movetop" title="Go to top">
-            <span class="fa fa-angle-up"></span>
+        <!-- Traversal Asistan -->
+        <button id="movetop" title="Open Chatbot">
+            <span class="fa fa-comments"></span>
         </button>
-        <script>
-            // When the user scrolls down 20px from the top of the document, show the button
-            window.onscroll = function () {
-                scrollFunction()
-            };
 
-            function scrollFunction() {
-                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                    document.getElementById("movetop").style.display = "block";
-                } else {
-                    document.getElementById("movetop").style.display = "none";
+        <div id="chatbox" style="display:none;">
+            <div id="chatboxHeader">
+                Traversal Asistan
+                <button id="closeChatbox" title="Close Chatbox">
+                    <span class="fa fa-times"></span>
+                </button>
+            </div>
+            <div id="chatboxMessages">
+                <!-- Welcome message -->
+                <div class="message bot-message">Merhaba 👋</div>
+                <div class="message bot-message">Ben Traversal Asistan. Şu an hizmet saatleri dışındayız ancak mesajınıza en yakın iş gününde dönmüş olacağız. :)</div>
+            </div>
+            <div id="chatboxInput">
+                <input type="text" id="userMessage" placeholder="Mesajınızı yazın...">
+                <button id="sendMessage" title="Send">
+                    <span class="fa fa-paper-plane"></span>
+                </button>
+            </div>
+        </div>
+
+
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Show or hide the chatbot icon based on scroll position
+                document.getElementById("movetop").style.display = "block";
+
+                // Toggle chatbot visibility
+                document.getElementById("movetop").onclick = function () {
+                    toggleChatbot();
+                };
+
+                // Close chatbot
+                document.getElementById("closeChatbox").onclick = function () {
+                    toggleChatbot();
+                };
+
+                function toggleChatbot() {
+                    var chatbox = document.getElementById('chatbox');
+                    if (chatbox.style.display === 'none') {
+                        chatbox.style.display = 'block';
+                        scrollToBottom(); // Chatbox açıldığında scroll'u aşağı kaydır
+                    } else {
+                        chatbox.style.display = 'none';
+                    }
                 }
+
+                // Function to scroll to the bottom of the chatbox messages
+                function scrollToBottom() {
+                    var chatboxMessages = document.getElementById('chatboxMessages');
+                    chatboxMessages.scrollTop = chatboxMessages.scrollHeight;
+                }
+
+                // Function to send a message
+                function sendMessage() {
+                    var userMessage = document.getElementById('userMessage').value;
+                    if (userMessage.trim() !== '') {
+                        var messageDiv = document.createElement('div');
+                        messageDiv.className = 'message user-message';
+                        messageDiv.textContent = userMessage;
+                        var chatboxMessages = document.getElementById('chatboxMessages');
+                        chatboxMessages.appendChild(messageDiv);
+                        document.getElementById('userMessage').value = '';
+
+                        // Scroll to bottom after a short delay
+                        setTimeout(function () {
+                            chatboxMessages.scrollTop = chatboxMessages.scrollHeight;
+                        }, 50);
+                    }
+                }
+
+                // Send message on button click
+                document.getElementById('sendMessage').onclick = function () {
+                    sendMessage();
+                };
+
+                // Send message on Enter key press
+                document.getElementById('userMessage').addEventListener('keydown', function (event) {
+                    if (event.key === 'Enter') {
+                        event.preventDefault(); // Enter tuşunun varsayılan işlevini durdurur
+                        sendMessage();
+                    }
+                });
+            });
+
+
+            
+        </script>
+
+
+        <style>
+            #chatbox {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 320px;
+                height: 450px;
+                background-color: #f8f9fa;
+                border-radius: 20px;
+                box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                z-index: 1000;
             }
 
-            // When the user clicks on the button, scroll to the top of the document
-            function topFunction() {
-                document.body.scrollTop = 0;
-                document.documentElement.scrollTop = 0;
+            #chatboxHeader {
+                background-color: #FF1654;
+                color: white;
+                padding: 15px;
+                text-align: center;
+                font-weight: bold;
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
             }
-        </script>
-        <!-- //move top -->
-        <script>
-            $(function () {
-                $('.navbar-toggler').click(function () {
-                    $('body').toggleClass('noscroll');
-                })
-            });
-        </script>
+
+                #chatboxHeader #closeChatbox {
+                    background: none;
+                    border: none;
+                    color: white;
+                    font-size: 20px;
+                    cursor: pointer;
+                }
+
+            #chatboxMessages {
+                flex: 1;
+                padding: 15px;
+                overflow-y: scroll;
+                background-color: #ffffff;
+                border-top: 1px solid #ccc;
+                display: flex;
+                flex-direction: column;
+                height: 320px;
+                justify-content: flex-start;
+            }
+
+                #chatboxMessages::-webkit-scrollbar {
+                    width: 8px;
+                }
+
+                #chatboxMessages::-webkit-scrollbar-track {
+                    background: #f1f1f1;
+                }
+
+                #chatboxMessages::-webkit-scrollbar-thumb {
+                    background: #888;
+                    border-radius: 4px;
+                }
+
+                    #chatboxMessages::-webkit-scrollbar-thumb:hover {
+                        background: #555;
+                    }
+
+            .message {
+                margin-bottom: 10px;
+                padding: 10px;
+                border-radius: 10px;
+                max-width: 80%;
+                line-height: 1.4;
+                word-wrap: break-word;
+            }
+
+                .message.bot-message {
+                    background-color: #e9ecef;
+                    align-self: flex-start;
+                }
+
+                .message.user-message {
+                    background-color: #FF1654;
+                    color: white;
+                    align-self: flex-end;
+                }
+
+            #chatboxInput {
+                display: flex;
+                padding: 5px 10px;
+                background-color: #f8f9fa;
+                border-top: 1px solid #ccc;
+                position: sticky;
+                bottom: 0;
+                z-index: 1;
+            }
+
+            #userMessage {
+                flex: 1;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 15px;
+                outline: none;
+                font-size: 14px;
+            }
+
+            #sendMessage {
+                background-color: #FF1654;
+                border: none;
+                padding: 10px;
+                margin-left: 8px;
+                border-radius: 50%;
+                color: white;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+                #sendMessage:hover {
+                    background-color: #FF1654;
+                }
+        </style>
+
     </section>
     <!-- //footer -->
 </footer>
