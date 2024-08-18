@@ -1,11 +1,13 @@
 ﻿using ClosedXML.Excel;
 using DataAccessLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OfficeOpenXml;
 using TraversalPresentationLayer.Models;
 
 namespace TraversalPresentationLayer.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
 
     public class ExcelController : Controller

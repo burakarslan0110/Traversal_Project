@@ -88,6 +88,30 @@
   }
 }
 
+.table-responsive {
+    overflow-x: auto; /* Yatay kaydırma çubuğu ekler */
+}
+
+.table thead th {
+    white-space: nowrap; /* Başlıkların tek satırda kalmasını sağlar */
+}
+
+.table img {
+    max-width: 100%;
+    height: auto; /* Görsellerin boyutunu koruyarak esnemesini sağlar */
+}
+
+@media (max-width: 768px) {
+    .card {
+        padding: 1rem; /* Mobilde kartın kenar boşluklarını artırır */
+    }
+
+    .table td, .table th {
+        padding: 0.5rem; /* Hücrelerin iç kenar boşluklarını mobil için ayarlar */
+    }
+}
+
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);

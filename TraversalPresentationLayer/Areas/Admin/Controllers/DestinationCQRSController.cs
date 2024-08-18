@@ -6,6 +6,7 @@ using TraversalPresentationLayer.CQRS.Queries.DestinationQueries;
 
 namespace TraversalPresentationLayer.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
 
     public class DestinationCQRSController : Controller

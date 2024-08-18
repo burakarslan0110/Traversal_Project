@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TraversalPresentationLayer.CQRS.Commands.DestinationCommands;
 using TraversalPresentationLayer.CQRS.Commands.GuideCommands;
@@ -7,6 +8,7 @@ using TraversalPresentationLayer.CQRS.Queries.GuideQueries;
 
 namespace TraversalPresentationLayer.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
 
     public class GuideMediatRController : Controller

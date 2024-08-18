@@ -1,0 +1,33 @@
+﻿@model List<AppUser>
+@{
+    ViewData["Title"] = "UserList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="card">
+    <h4 class="card-header">Kullanıcı Rol Listesi</h4>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="">
+                <tr>
+                    <th></th>
+                    <th>Kullanıcı Adı</th>
+                    <th>Rol Ata</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i><strong>@count</strong></td>
+                        <td>@item.UserName</td>
+                        <td><a href="/Admin/Role/AssignRole/@item.Id" class="btn btn-success">Rol Ata</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

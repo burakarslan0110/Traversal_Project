@@ -1,0 +1,17 @@
+﻿@using DTOLayer.DTOs.AppRoleDTOs
+@model EditRoleDTO
+@{
+    ViewData["Title"] = "EditRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Rol Düzenleme</h1>
+
+<form method="post">
+    @Html.HiddenFor(x => x.RoleID)
+    <label>Rol Adı: </label>
+    <input type="text" class="form-control" asp-for="RoleName" />
+    <br />
+    <button class="btn btn-primary">Rolü Kaydet</button>
+</form>
+

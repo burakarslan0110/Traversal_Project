@@ -1,0 +1,63 @@
+﻿@model List<AppRole>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="card">
+    <h4 class="card-header">Rol Yönetimi</h4>
+    <div class="table-responsive"> 
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Rol Adı</th>
+                    <th>Rolü Sil</th>
+                    <th>Rolü Düzenle</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <td>@count</td>
+                        <td>@item.Name</td>
+                        <td><a href="/Admin/Role/DeleteRole/@item.Id" class="btn btn-danger">Rolü Sil</a></td>
+                        <td><a href="/Admin/Role/EditRole/@item.Id" class="btn btn-success">Rolü Güncelle</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div> 
+</div>
+<br />
+<a href="/Admin/Role/AddRole" class="btn btn-outline-primary">Yeni Rol Oluştur</a>
+
+<style>
+    .table-responsive {
+        overflow-x: auto; /* Yatay kaydırma çubuğu ekler */
+    }
+
+    .table thead th {
+        white-space: nowrap; /* Başlıkların tek satırda kalmasını sağlar */
+    }
+
+    .table img {
+        max-width: 100%;
+        height: auto; /* Görsellerin boyutunu koruyarak esnemesini sağlar */
+    }
+
+    .media (max-width: 768px) {
+        .card {
+            padding: 1rem; /* Mobilde kartın kenar boşluklarını artırır */
+        }
+
+        .table td, .table th {
+            padding: 0.5rem; /* Hücrelerin iç kenar boşluklarını mobil için ayarlar */
+        }
+    }
+</style>
+
+

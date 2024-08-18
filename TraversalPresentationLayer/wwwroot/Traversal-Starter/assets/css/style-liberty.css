@@ -15033,16 +15033,6 @@ nav ul li a:hover {
   height: 56px;
 }
 
-.book-form select {
-  background: #fff url(../images/down.png) no-repeat 92% 52%;
-  -webkit-appearance: none;
-}
-
-.booking-form input[type="date"] {
-  background: #fff url(../images/date.png) 92% 50% no-repeat;
-  -webkit-appearance: none;
-}
-
 @media (max-width:800px) {
   .demo-inner-content h3 {
     font-size: 54px;

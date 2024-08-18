@@ -10,31 +10,11 @@
         <div class="navbar-nav align-items-center">
             <div class="nav-item d-flex align-items-center">
                 <i class="bx bx-bell fs-4 lh-0"></i>
-                <div class="announcement-banner">
-                    <span id="announcement-text"> @DateTime.Now.ToShortDateString() - Yeni bildirim bulunmamaktadır.</span>
+                <div >
+                    <span style ="margin-left: 0.50rem">  @DateTime.Now.ToShortDateString() - Yeni bildirim yok.</spanstyle>
                 </div>
             </div>
         </div>
         <!-- /Search -->
     </div>
-
-    <style>
-        .announcement-banner {
-            white-space: nowrap;
-            overflow: hidden;
-            width: 900px; /* Banner genişliği */
-            position: relative;
-            margin-left: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        #announcement-text {
-            position: relative;
-            white-space: nowrap;
-            display: inline-block;
-        }
-    </style>
-
-
 </nav>

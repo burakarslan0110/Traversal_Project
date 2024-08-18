@@ -68,12 +68,14 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequiredUniqueChars = 3;
 });
 
+
 builder.Services.AddMvc();
 
 builder.Services.PostConfigure<CookieAuthenticationOptions>(IdentityConstants.ApplicationScheme, options =>
 {
     options.LoginPath = "/Login/SignIn";
     options.LogoutPath = "/Login/Logout";
+    options.AccessDeniedPath = "/Error/Error404";
 });
 
 var app = builder.Build();

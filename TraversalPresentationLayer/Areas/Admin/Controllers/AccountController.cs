@@ -8,6 +8,8 @@ using TraversalPresentationLayer.Areas.Admin.Models;
 
 namespace TraversalPresentationLayer.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
 
     public class AccountController : Controller

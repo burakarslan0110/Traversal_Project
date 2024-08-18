@@ -7,6 +7,7 @@
 
 <div class="card">
     <h4 class="card-header">Yorumlar</h4>
+    <div class="table-responsive">
         <table class="table table-hover">
             <thead class="">
                 <tr>
@@ -22,7 +23,7 @@
                 {
                     <tr>
                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@item.CommentID</strong></td>
-                    <td>@item.AppUser.Name @item.AppUser.Surname</td>
+                        <td>@item.AppUser.Name @item.AppUser.Surname</td>
                         <td>@item.Destination.City</td>
                         <td><span class="badge bg-label-primary me-1">@Convert.ToDateTime(item.CommentDate).ToShortDateString()</span></td>
                         <td>
@@ -31,7 +32,7 @@
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/Destination/DestinationDetails/@item.DestinationID"><i class="bx bxs-bullseye me-1"></i>Yorumu Sitede Gör</a>
+                                    <a class="dropdown-item" href="/Destination/DestinationDetails/@item.DestinationID"><i class="bx bxs-bullseye me-1"></i>Yorumu Sitede Gör</a>
                                     <a class="dropdown-item" href="/Admin/Comment/DeleteComment/@item.CommentID"><i class="bx bx-trash me-1"></i>Yorumu Sil</a>
                                 </div>
                             </div>
@@ -40,5 +41,6 @@
                 }
             </tbody>
         </table>
+    </div>
 </div>
 

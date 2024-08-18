@@ -7,39 +7,69 @@
 
 <div class="card">
     <h4 class="card-header">Duyurular</h4>
-    <table class="table table-hover">
-        <thead class="">
-            <tr>
-                <th></th>
-                <th>Başlık</th>
-                <th>İçerik</th>
-                <th>İşlemler</th>
-            </tr>
-        </thead>
-        <tbody class="table-border-bottom-0">
-            @foreach (var item in Model)
-            {
-                count++;
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="">
                 <tr>
-                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i><strong>@count</strong></td>
-                    <td>@item.Title</td>
-                    <td>@item.Content</td>
-                    <td>
-                        <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="/Admin/Announcement/EditAnnouncement/@item.AnnouncementID"><i class="bx bx-edit-alt me-1"></i>Düzenle</a>
-                                <a class="dropdown-item" href="/Admin/Announcement/DeleteAnnouncement/@item.AnnouncementID"><i class="bx bx-trash me-1"></i>Sil</a>
-                            </div>
-                        </div>
-                    </td>
+                    <th></th>
+                    <th>Başlık</th>
+                    <th>İçerik</th>
+                    <th>İşlemler</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i><strong>@count</strong></td>
+                        <td>@item.Title</td>
+                        <td>@item.Content</td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/Admin/Announcement/EditAnnouncement/@item.AnnouncementID"><i class="bx bx-edit-alt me-1"></i>Düzenle</a>
+                                    <a class="dropdown-item" href="/Admin/Announcement/DeleteAnnouncement/@item.AnnouncementID"><i class="bx bx-trash me-1"></i>Sil</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
-</br>
+<br />
 <a href="/Admin/Announcement/AddAnnouncement" class="btn btn-outline-primary">Yeni Duyuru Ekle</a>
+
+<style>
+    .table-responsive {
+        overflow-x: auto; /* Yatay kaydırma çubuğu ekler */
+    }
+
+    .table thead th {
+        white-space: nowrap; /* Başlıkların tek satırda kalmasını sağlar */
+    }
+
+    .table img {
+        max-width: 100%;
+        height: auto; /* Görsellerin boyutunu koruyarak esnemesini sağlar */
+    }
+
+    .media (max-width: 768px) {
+        .card
+
+    {
+        padding: 1rem; /* Mobilde kartın kenar boşluklarını artırır */
+    }
+
+    .table td, .table th {
+        padding: 0.5rem; /* Hücrelerin iç kenar boşluklarını mobil için ayarlar */
+    }
+
+    }
+</style>
 

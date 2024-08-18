@@ -8,31 +8,33 @@
 
 <div class="card">
     <h4 class="card-header">Bize Ulaşın Mesajları</h4>
-    <table class="table table-hover">
-        <thead class="">
-            <tr>
-                <th></th>
-                <th>Gönderen</th>
-                <th>Konu</th>
-                <th>Tarih</th>
-                <th>Mesajı Görüntüle</th>
-                <th>Sil</th>
-            </tr>
-        </thead>
-        <tbody class="table-border-bottom-0">
-            @foreach (var item in Model)
-            {
-                count++;
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="">
                 <tr>
-                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@count</strong></td>
-                    <td>@item.NameSurname</td>
-                    <td>@item.Subject</td>
-                    <td><span class="badge bg-label-primary me-1">@item.MessageDate.ToShortDateString()</span></td>
-                    <td><a href="/Admin/ContactUs/ViewMessage/@item.ContactUsID" class="btn btn-outline-dark">Mesajı Görüntüle</a></td>
-                    <td><a href="/Admin/ContactUs/DeleteMessage/@item.ContactUsID" class="btn btn-outline-danger">Mesajı Sil</a></td>
+                    <th></th>
+                    <th>Gönderen</th>
+                    <th>Konu</th>
+                    <th>Tarih</th>
+                    <th>Mesajı Görüntüle</th>
+                    <th>Sil</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>@count</strong></td>
+                        <td>@item.NameSurname</td>
+                        <td>@item.Subject</td>
+                        <td><span class="badge bg-label-primary me-1">@item.MessageDate.ToShortDateString()</span></td>
+                        <td><a href="/Admin/ContactUs/ViewMessage/@item.ContactUsID" class="btn btn-outline-dark">Mesajı Görüntüle</a></td>
+                        <td><a href="/Admin/ContactUs/DeleteMessage/@item.ContactUsID" class="btn btn-outline-danger">Mesajı Sil</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
 

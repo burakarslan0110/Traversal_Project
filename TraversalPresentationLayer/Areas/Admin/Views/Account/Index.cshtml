@@ -7,29 +7,57 @@
 
 <div class="card">
     <h4 class="card-header">Unit Of Work Personel Prim Listesi</h4>
-    <table class="table table-hover">
-        <thead class="">
-            <tr>
-                <th></th>
-                <th>Hesap No</th>
-                <th>Rehber Adı Soyadı</th>
-                <th>Prim Bakiye</th>
-            </tr>
-        </thead>
-        <tbody class="table-border-bottom-0">
-            @foreach (var item in Model)
-            {
-                count++;
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="">
                 <tr>
-                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i><strong>@count</strong></td>
-                    <td>@item.AccountID</td>
-                    <td>@item.Guide.GuideName</td>
-                    <td>@item.Balance TL</td>
+                    <th></th>
+                    <th>Hesap No</th>
+                    <th>Rehber Adı Soyadı</th>
+                    <th>Prim Bakiye</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i><strong>@count</strong></td>
+                        <td>@item.AccountID</td>
+                        <td>@item.Guide.GuideName</td>
+                        <td>@item.Balance TL</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>
 </br>
 <a href="/Admin/Account/SendUOW/" class="btn btn-outline-primary">Prim Transferi Gerçekleştir</a>
+<style>
+    .table-responsive {
+        overflow-x: auto; /* Yatay kaydırma çubuğu ekler */
+    }
 
+    .table thead th {
+        white-space: nowrap; /* Başlıkların tek satırda kalmasını sağlar */
+    }
+
+    .table img {
+        max-width: 100%;
+        height: auto; /* Görsellerin boyutunu koruyarak esnemesini sağlar */
+    }
+
+    .media (max-width: 768px) {
+        .card
+
+    {
+        padding: 1rem; /* Mobilde kartın kenar boşluklarını artırır */
+    }
+
+    .table td, .table th {
+        padding: 0.5rem; /* Hücrelerin iç kenar boşluklarını mobil için ayarlar */
+    }
+
+    }
+</style>

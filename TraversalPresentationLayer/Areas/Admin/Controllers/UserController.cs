@@ -3,10 +3,12 @@ using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using DocumentFormat.OpenXml.Drawing.Charts;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace TraversalPresentationLayer.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class UserController : Controller
     {
