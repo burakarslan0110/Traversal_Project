@@ -74,21 +74,23 @@
         </div>
 
         <!-- Traversal Asistan -->
-        <button id="movetop" title="Open Chatbot">
+        <button id="movetop" title="Traversal AI Asistan'ı Aç'">
             <span class="fa fa-comments"></span>
         </button>
 
         <div id="chatbox" style="display:none;">
             <div id="chatboxHeader">
-                Traversal Asistan
-                <button id="closeChatbox" title="Close Chatbox">
+                Traversal AI Asistan
+                <button id="closeChatbox" title="Traversal AI Asistan'ı Kapat'">
                     <span class="fa fa-times"></span>
                 </button>
             </div>
             <div id="chatboxMessages">
                 <!-- Welcome message -->
                 <div class="message bot-message">Merhaba 👋</div>
-                <div class="message bot-message">Ben Traversal Asistan. Şu an hizmet saatleri dışındayız ancak mesajınıza en yakın iş gününde dönmüş olacağız. :)</div>
+                <div class="message bot-message">Ben Traversal AI Asistan. Aklınızdaki soruların cevabını benden alabilirsiniz, örneğin tatil planınızı hazırlayabilir veya nerde ne yenir önerisinde bulunabilirim. :)</div>
+                <div id="loadingMessage" style="display: none;" class="message bot-message">...</div>
+
             </div>
             <div id="chatboxInput">
                 <input type="text" id="userMessage" placeholder="Mesajınızı yazın...">
@@ -97,8 +99,6 @@
                 </button>
             </div>
         </div>
-
-
 
         <script>
             document.addEventListener("DOMContentLoaded", function () {
@@ -132,9 +132,12 @@
                 }
 
                 // Function to send a message
+                var messageHistory = [];
+
                 function sendMessage() {
                     var userMessage = document.getElementById('userMessage').value;
                     if (userMessage.trim() !== '') {
+                        // Kullanıcı mesajını arayüze ekleyelim
                         var messageDiv = document.createElement('div');
                         messageDiv.className = 'message user-message';
                         messageDiv.textContent = userMessage;
@@ -142,11 +145,73 @@
                         chatboxMessages.appendChild(messageDiv);
                         document.getElementById('userMessage').value = '';
 
-                        // Scroll to bottom after a short delay
-                        setTimeout(function () {
-                            chatboxMessages.scrollTop = chatboxMessages.scrollHeight;
-                        }, 50);
+                        // Mesaj geçmişine kullanıcı mesajını ekleyelim
+                        messageHistory.push({ role: 'user', content: userMessage });
+
+                        // Yükleme mesajını ekleyelim
+                        var loadingMessage = document.getElementById('loadingMessage');
+                        loadingMessage.style.display = 'block';
+                        chatboxMessages.appendChild(loadingMessage);
+                        scrollToBottom(); // Yükleme mesajı eklenince scroll'u aşağı kaydır
+
+                        // API'ye istek gönderelim
+                        fetch('/api/chat', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({ text: userMessage, history: messageHistory })
+                        })
+                            .then(response => {
+                                if (!response.ok) {
+                                    return response.text().then(errorMessage => {
+                                        // Hata mesajını gösterecek bir fonksiyon çağır
+                                        displayErrorMessage(errorMessage);
+                                        throw new Error(errorMessage);
+                                    });
+                                }
+                                return response.json();
+                            })
+                            .then(data => {
+                                // Bot yanıtını alalım ve geçmişe ekleyelim
+                                var botMessage = data.choices[0].message.content.trim();
+                                messageHistory.push({ role: 'assistant', content: botMessage });
+
+                                // Bot mesajını arayüze ekleyelim
+                                var botMessageDiv = document.createElement('div');
+                                botMessageDiv.className = 'message bot-message';
+                                botMessageDiv.textContent = botMessage;
+                                chatboxMessages.appendChild(botMessageDiv);
+
+                                // Yükleme mesajını kaldır
+                                loadingMessage.style.display = 'none';
+
+                                // Scroll'u aşağı kaydır
+                                setTimeout(function () {
+                                    chatboxMessages.scrollTop = chatboxMessages.scrollHeight;
+                                }, 50);
+                            })
+                            .catch(error => console.error('Error:', error))
+                            .finally(() => {
+                                // Yükleme mesajını kaldır
+                                loadingMessage.style.display = 'none';
+                            });
                     }
+                }
+
+                // Hata mesajını arayüzde göstermek için fonksiyon
+                function displayErrorMessage(message) {
+                    var chatboxMessages = document.getElementById('chatboxMessages');
+                    var errorMessageDiv = document.createElement('div');
+                    errorMessageDiv.className = 'message bot-message';
+                    errorMessageDiv.textContent = message;
+                    errorMessageDiv.style.backgroundColor = '#f8d7da'; // Hata mesajları için arka plan rengi
+                    chatboxMessages.appendChild(errorMessageDiv);
+
+                    // Scroll'u aşağı kaydır
+                    setTimeout(function () {
+                        chatboxMessages.scrollTop = chatboxMessages.scrollHeight;
+                    }, 50);
                 }
 
                 // Send message on button click
@@ -162,6 +227,8 @@
                     }
                 });
             });
+
+
 
 
             
@@ -242,6 +309,14 @@
                 line-height: 1.4;
                 word-wrap: break-word;
             }
+
+            #loadingMessage {
+                font-size: 18px;
+                color: #888;
+                text-align: center;
+                margin: 10px;
+            }
+
 
                 .message.bot-message {
                     background-color: #e9ecef;
