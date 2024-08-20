@@ -11,7 +11,7 @@
     @Html.HiddenFor(x => x.AnnouncementID)
     <div class="form-group">
         @Html.Label("Duyuru İçeriği: ")
-        @Html.TextAreaFor(x => x.Content, new { @class = "form-control", @rows = 5, @cols = 50, @readonly = "readonly" })
+        @Html.TextAreaFor(x => x.Content, new { @class = "form-control", @rows = 20, @cols = 100, @readonly = "readonly" })
     </div>
     <br />
     <a href="/Member/Dashboard" class="btn btn-sm btn-outline-dark">Ana Sayfaya Dön</a>

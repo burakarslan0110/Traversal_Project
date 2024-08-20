@@ -87,6 +87,40 @@ builder.Services.PostConfigure<CookieAuthenticationOptions>(IdentityConstants.Ap
 });
 
 var app = builder.Build();
+
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path.Equals("/Member", StringComparison.OrdinalIgnoreCase))
+    {
+        context.Response.Redirect("/Member/Dashboard");
+    }
+    else if (context.Request.Path.Equals("/Member/", StringComparison.OrdinalIgnoreCase))
+    {
+        context.Response.Redirect("/Member/Dashboard");
+    }
+    else
+    {
+        await next();
+    }
+});
+
+app.Use(async (context, next) =>
+{
+    if (context.Request.Path.Equals("/Admin", StringComparison.OrdinalIgnoreCase))
+    {
+        context.Response.Redirect("/Admin/Dashboard");
+    }
+    else if (context.Request.Path.Equals("/Admin/", StringComparison.OrdinalIgnoreCase))
+    {
+        context.Response.Redirect("/Admin/Dashboard");
+    }
+    else
+    {
+        await next();
+    }
+});
+
+
 app.UseSession();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -109,10 +143,10 @@ app.UseEndpoints(endpoints =>
     endpoints.MapControllerRoute(
         name: "areas",
         pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-
+    
     endpoints.MapControllerRoute(
         name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
+        pattern: "{controller=Default}/{action=Index}/{id?}");
 });
 
 

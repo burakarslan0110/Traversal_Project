@@ -4,60 +4,65 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-    <h1>Rota Güncelleme</h1>
-    <form method="post">
-        @Html.HiddenFor(x=>x.DestinationID)
-        <div class="form-group">
-            @Html.Label("Şehir Adı: ")
-            <input type="text" asp-for="City" class="form-control" required />
-        </div>
-        <br />
-        <div class="form-group">
-            @Html.Label("Gün/Gece Bilgisi: ")
-            <input type="text" asp-for="DayNight" class="form-control" required />
-        </div>
-        <br />
-        <div class="form-group">
-            @Html.Label("Fiyat: ")
-            <input type="number" asp-for="Price" class="form-control" required />
-        </div>
-        <br />
-        <div class="form-group">
+<h1>Rota Güncelleme</h1>
+<form method="post">
+    @Html.HiddenFor(x => x.DestinationID)
+    <div class="form-group">
+        @Html.Label("Şehir Adı: ")
+        <input type="text" asp-for="City" class="form-control" required />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Gün/Gece Bilgisi: ")
+        <input type="text" asp-for="DayNight" class="form-control" required />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Fiyat: ")
+        <input type="number" asp-for="Price" class="form-control" required />
+    </div>
+    <br />
+    <div class="form-group">
         @Html.Label("Tur Rehberi: ")
         @Html.DropDownListFor(x => x.GuideID, (List<SelectListItem>)ViewBag.SLG, new { @class = "form-control" })
-        </div>
-        <br />
-        <div class="form-group">
-            @Html.Label("Ana Görsel: ")
-            <input type="text" asp-for="Image" class="form-control" required />
-        </div>
-        <br />
-        <div class="form-group">
-            @Html.Label("Kapasite: ")
-            <input type="number" asp-for="Capacity" class="form-control" required />
-        </div>
-        <br />
-        <div class="form-group">
-            @Html.Label("Kapak Görseli: ")
-            <input type="text" asp-for="CoverImage" class="form-control" required />
-        </div>
-        <br />
-        <div class="form-group">
-            @Html.Label("Görsel 2: ")
-            <input type="text" asp-for="Image2" class="form-control" required />
-        </div>
-        <br />
-        <div class="form-group">
-            @Html.Label("Detay 1: ")
-            <textarea cols="30" rows="5" class="form-control" asp-for="Details1" required></textarea>
-        </div>
-        <br />
-        <div class="form-group">
-            @Html.Label("Detay 2: ")
-            <textarea cols="30" rows="5" class="form-control" asp-for="Details2" required></textarea>
-        </div>
-        <br />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Kapasite: ")
+        <input type="number" asp-for="Capacity" class="form-control" required />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Kısa Açıklama: ")
+        <input type="text" asp-for="Description" class="form-control" required />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Kapak Görseli: ")
+        <input type="text" asp-for="CoverImage" class="form-control" required />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Görsel 1: ")
+        <input type="text" asp-for="Image" class="form-control" required />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Görsel 2: ")
+        <input type="text" asp-for="Image2" class="form-control" required />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Detay 1: ")
+        <textarea cols="30" rows="5" class="form-control" asp-for="Details1" required></textarea>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Detay 2: ")
+        <textarea cols="30" rows="5" class="form-control" asp-for="Details2" required></textarea>
+    </div>
+    <br />
     <button class="btn btn-outline-primary" onclick="alert('Rota kaydı başarıyla düzenlendi')">Rotayı Kaydet</button>
-    </form>
+</form>
 
 

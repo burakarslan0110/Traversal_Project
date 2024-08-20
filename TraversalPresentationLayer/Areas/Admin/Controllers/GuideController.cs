@@ -39,7 +39,7 @@ namespace TraversalPresentationLayer.Areas.Admin.Controllers
             if(validationResult.IsValid)
             {
                 _guideService.TInsert(guide);
-                return RedirectToAction("Guide", "Admin");
+                return RedirectToAction("Index");
             }
             else
             {

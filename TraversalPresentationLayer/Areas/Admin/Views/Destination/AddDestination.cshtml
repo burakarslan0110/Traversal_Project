@@ -27,18 +27,23 @@
     </div>
     <br />
     <div class="form-group">
-        @Html.Label("Ana Görsel: ")
-        <input type="text" asp-for="Image" class="form-control" required/>
+        @Html.Label("Kapasite: ")
+        <input type="number" asp-for="Capacity" class="form-control" required />
     </div>
     <br />
     <div class="form-group">
-        @Html.Label("Kapasite: ")
-        <input type="number" asp-for="Capacity" class="form-control" required/>
+        @Html.Label("Kısa Açıklama: ")
+        <input type="text" asp-for="Description" class="form-control" required />
     </div>
     <br />
     <div class="form-group">
         @Html.Label("Kapak Görseli: ")
-        <input type="text" asp-for="CoverImage" class="form-control" required/>
+        <input type="text" asp-for="CoverImage" class="form-control" required />
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Görsel 1: ")
+        <input type="text" asp-for="Image" class="form-control" required />
     </div>
     <br />
     <div class="form-group">

@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model List<Destination>
+@{int count = 0;}
 
 <section class="w3l-grids-3 py-5">
     <div class="container py-md-5">
@@ -11,27 +12,35 @@
             <!--/row-grids-->
             @foreach(var item in Model)
             {
-                <div class="col-lg-6 subject-card mt-lg-0 mt-4">
-                    <br />
-                    <div class="subject-card-header p-4">
-                        <a href="/Destination/DestinationDetails/@item.DestinationID" class="card_title p-lg-4d-block">
-                            <div class="row align-items-center">
-                                <div class="col-sm-5 subject-img">
-                                    <img src="@item.Image" style="width:350px; height:200px" class="img-fluid" alt="">
-                                </div>
-                                <div class="col-sm-7 subject-content mt-sm-0 mt-4">
-                                    <h4>@item.City</h4>
-                                    <p>@item.DayNight</p>
-                                    <div class="dst-btm">
-                                        <h6 class=""> Başlangıç Fiyatı: </h6>
-                                        <span>@item.Price $</span>
+               count++;
+                @if(count<5)
+                {
+                    <div class="col-lg-6 subject-card mt-lg-0 mt-4">
+                        <br />
+                        <div class="subject-card-header p-4">
+                            <a href="/Destination/DestinationDetails/@item.DestinationID" class="card_title p-lg-4d-block">
+                                <div class="row align-items-center">
+                                    <div class="col-sm-5 subject-img">
+                                        <img src="@item.CoverImage" style="width:350px; height:200px" class="img-fluid" alt="">
                                     </div>
-                                    <p class="sub-para">@item.Description</p>
+                                    <div class="col-sm-7 subject-content mt-sm-0 mt-4">
+                                        <h4>@item.City</h4>
+                                        <p>@item.DayNight</p>
+                                        <div class="dst-btm">
+                                            <h6 class=""> Başlangıç Fiyatı: </h6>
+                                            <span>@item.Price $</span>
+                                        </div>
+                                        <div class="dst-btm">
+                                            <h6 class=""> Kontenjan: </h6>
+                                            <span>@item.Capacity</span>
+                                        </div>
+                                        <p class="sub-para style" style=" font-style: italic;">@item.Description</p>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
-                </div>
+                } 
             }
         </div>
     </div>

@@ -27,13 +27,17 @@
                     {
                         <div class="col-lg-4 col-md-4 col-6">
                             <div class="column">
-                                <a href="/Destination/DestinationDetails/@item.DestinationID"><img src="@item.Image" alt="" class="img-fluid" style="width:360px; height:200px"></a>
+                                <a href="/Destination/DestinationDetails/@item.DestinationID"><img src="@item.CoverImage" alt="" class="img-fluid" style="width:360px; height:200px"></a>
                                 <div class="info">
                                     <h4><a href="/Destination/DestinationDetails/@item.DestinationID">@item.City</a></h4>
                                     <p>@item.DayNight</p>
                                     <div class="dst-btm">
                                         <h6 class="">Başlangıç Fiyatı: </h6>
                                         <span>@item.Price$</span>
+                                    </div>
+                                    <div class="dst-btm">
+                                        <h6 class="">Kontenjan: </h6>
+                                        <span>@item.Capacity</span>
                                     </div>
                                 </div>
                             </div>

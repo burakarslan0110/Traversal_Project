@@ -44,16 +44,16 @@
                 <button id="userButton" class="btn btn-danger mx-2">
                     <i class="fa fa-user-circle"></i>
                 </button>
-                <div id="userDropdown" class="dropdown-menu dropdown-menu-right">
+                <div id="userDropdown" class="dropdown-menu1 dropdown-menu-right">
                     @if (User.Identity.IsAuthenticated == true)
                     {
-                        <a class="dropdown-item" href="/Member/Dashboard">Üye Profili</a>
-                        <a class="dropdown-item" href="#" id="logoutLink">Çıkış Yap</a>
+                        <a class="dropdown-item1" href="/Member/Dashboard">Üye Profili</a>
+                        <a class="dropdown-item1" href="#" id="logoutLink">Çıkış Yap</a>
                     }
                     else
                     {
-                        <a class="dropdown-item" href="/Login/SignIn">Giriş Yap</a>
-                        <a class="dropdown-item" href="/Login/SignUp">Kayıt Ol</a>
+                        <a class="dropdown-item1" href="/Login/SignIn">Giriş Yap</a>
+                        <a class="dropdown-item1" href="/Login/SignUp">Kayıt Ol</a>
                     }
                 </div>
 
@@ -77,7 +77,7 @@
 
 <style>
     /* User button styles (same as Rezervasyon Yap) */
-    .btn-danger {
+    .btn-danger1 {
         background-color: #f84a3e; /* Rezervasyon yap buton rengi */
         border-color: #f84a3e;
         border-radius: 5px;
@@ -92,7 +92,7 @@
     }
 
     /* Dropdown styles */
-    .dropdown-menu {
+    .dropdown-menu1 {
         display: none; /* Başlangıçta gizli */
         position: absolute;
         top: 100%; /* Butonun hemen altında */
@@ -112,19 +112,23 @@
         display: block; /* Dropdown menüyü göster */
     }
 
-    .dropdown-item {
+    .dropdown-item1 {
         padding: 8px 15px; /* Dropdown seçeneklerinin iç dolgu miktarı azaltıldı */
         color: #333;
         text-decoration: none;
         display: block;
+        border-bottom: none;
+        background-color: transparent; /* Arka planı transparan yap */
     }
 
-        .dropdown-item:hover {
-            background-color: #f8f9fa;
+        .dropdown-item1:hover {
+            background-color: transparent !important; /* Arka plan rengini devre dışı bırak */
+            color: inherit !important; /* Yazı rengini devre dışı bırak */
+            text-decoration: none !important; /* Alt çizgiyi devre dışı bırak */
         }
 
     /* Adjust theme switch wrapper position */
-    .theme-switch-wrapper {
+    .theme-switch-wrapper1 {
         margin-left: 10px; /* Gece modu anahtarının butona daha yakın olması için */
     }
 </style>

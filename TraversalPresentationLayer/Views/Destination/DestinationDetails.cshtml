@@ -5,8 +5,8 @@
 }
 
 <body>
-
-    <!--header
+    <!--header>
+        
     <!-- //header -->
     <!-- about breadcrumb -->
     <section class="w3l-about-breadcrumb text-left">
@@ -31,7 +31,7 @@
         </div>
         <div class="blog-post-align">
             <div class="blog-post-img mb-1">
-                <a href="#"><img src="@Model.Guide.Image" alt="" style="width:70px; height:70px" class="rounded-circle img-fluid" /></a>
+                <a href="/Guides/Index"><img src="@Model.Guide.Image" alt="" style="width:75px; height:75px" class="rounded-circle img-fluid" /></a>
             </div>
             <div class="blog-post-info">
                 <div class="author align-items-center mb-1">
@@ -51,27 +51,27 @@
                     </div>
                 </div>
                 <div class="single-post-content">
-                    <p class="alphabet mb-4">
+                    <p>
                         <span>@Model.Details1</span>
                     </p>
                     <blockquote class="blockquote my-5">
                         <div class="icon-quote"><span class="fa fa-quote-left" aria-hidden="true"></span></div>
-                        <p class="alphabet mb-4">
-                            <span>asd</span>
+                        <p class="">
+                            <span>Traversal ile geçirdiğimiz tatil mükemmeldi! Organizasyon harikaydı, rehberler profesyoneldi ve konaklama çok rahat oldu. Seyahatimiz sorunsuz geçti ve her şey düşünülmüş. Traversal'a bu mükemmel deneyim için teşekkürler, gelecekteki tatillerimiz için kesinlikle tercih edeceğimiz bir adres!</span>
                         </p>
                         <footer class="blockquote-footer mt-3">
-                            
+                            <p>Esra Bulut - Traversal Misafiri</p>
                         </footer>
                     </blockquote>
                     <div class="sing-post-thumb mb-5 row pt-3">
                         <div class="col-sm-6 post-content">
-                            <a href="#url"><img src="@Model.Image"  class="img-fluid imgX radius-image" alt=""></a>
+                            <img src="@Model.Image"  class="img-fluid imgX radius-image" alt="">
                         </div>
                         <div class="col-sm-6 mt-sm-0 mt-3 post-content">
-                            <a href="#url"><img src="@Model.Image2"  class="img-fluid imgX radius-image" alt=""></a>
+                           <img src="@Model.Image2"  class="img-fluid imgX radius-image" alt="">
                         </div>
                     </div>
-                    <p class="alphabet mb-4">
+                    <p>
                         <span>@Model.Details2</span>
                     </p>
 
@@ -81,7 +81,6 @@
                             <a>Seyehat</a>
                             <a>Tatil</a>
                             <a>Konaklama</a>
-                            <a>Tur</a>
 
                         </div>
                         <div class="buttons-singles">
@@ -151,12 +150,14 @@
             text-align: center; /* İçerik metinlerini ortalar */
         }
 
-        imgX {
+        .imgX {
             max-width: 100%; /* Görselin genişliğini kapsayıcının genişliği ile sınırlandırır */
             max-height: 400px; /* Görselin yüksekliğini sabit bir değere sınırlar */
             width: auto; /* Genişlik, yükseklikteki orana göre ayarlanır */
             height: auto; /* Yükseklik, genişlikteki orana göre ayarlanır */
             object-fit: cover; /* Görseli kapsayıcıya uygun şekilde kırpar ve doldurur */
+
+
         }
     </style>
 </body>

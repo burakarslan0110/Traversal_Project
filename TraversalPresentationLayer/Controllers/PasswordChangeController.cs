@@ -48,7 +48,7 @@ namespace TraversalPresentationLayer.Controllers
 
             // E-posta mesajını oluştur
             MimeMessage mimeMessage = new MimeMessage();
-            MailboxAddress mailboxAddressFrom = new MailboxAddress("MyTraversalProject", "mytraversalproject@gmail.com");
+            MailboxAddress mailboxAddressFrom = new MailboxAddress("MyTraversalProject", "");
             mimeMessage.From.Add(mailboxAddressFrom);
             MailboxAddress mailboxAddressTo = new MailboxAddress("User", p.Email);
             mimeMessage.To.Add(mailboxAddressTo);
@@ -61,7 +61,7 @@ namespace TraversalPresentationLayer.Controllers
             using (var client = new SmtpClient())
             {
                 client.Connect("smtp.gmail.com", 587, false);
-                client.Authenticate("mytraversalproject@gmail.com", "ujwf krbw srhn hqgd");
+                client.Authenticate("mytraversalproject@gmail.com", "");
                 client.Send(mimeMessage);
                 client.Disconnect(true);
             }
