@@ -12,7 +12,7 @@ Traversal, kullanıcıların yönetici tarafından oluşturulan seyahat turları
 
 ![image](https://github.com/user-attachments/assets/5bce8938-5e56-4bd3-9ec1-ea89c1d906ea)
 
-Microsoft Azure üzerinden canlıya aldığım Traversal sitemin linki: https://traversal.live/
+Microsoft Azure üzerinden canlıya aldığım Traversal sitemin linki: traversal.live
 
 Bu projeyi **ASP.NET Core 8** altında geliştirirken, pek çok kütüphane ve yapıyı detaylı bir şekilde kullanarak özellikle back-end temelimi güçlendirdim. Kullandığım teknolojileri şu şekilde sıralayabilirim:
 
