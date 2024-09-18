@@ -1,6 +1,6 @@
 Traversal, kullanıcıların yönetici tarafından oluşturulan seyahat turlarını görüntüleyip rezervasyon yapabilecekleri bir senaryo üzerine kurguladığım web sitesi. Kullanıcılar, farklı tatil turlarını ve detaylarını inceleyebilir, rehber bilgilerini görüntüleyebilir, istedikleri turlara rezervasyon yaptırabilir ve OpenAI API üzerinden çalışan Traversal AI Asistan’dan faydalanarak akıllarındaki sorulara cevap alabilirler. Ayrıca yönetici paneli tarafında ise istatistik görüntüleme ve CRUD işlemleriyle beraber çok çeşitli özellikler bulunuyor.
 
-Projeyi Docker Compose aracılığıyla lokalinizde ağaya kaldırmak için terminalden projenin yml dosyasının yer aldığı dizine erişip aşağıdaki komutu çalıştırabilirsiniz. Ardından tarayıcınızla localhost adresine bağlanın. 
+Projeyi Docker Compose aracılığıyla lokalinizde ayağa kaldırmak için terminalden projenin yml dosyasının yer aldığı dizine erişip aşağıdaki komutu çalıştırabilirsiniz. Ardından tarayıcınızla localhost adresine bağlanın. 
 
 ```charp
  docker compose up -d
