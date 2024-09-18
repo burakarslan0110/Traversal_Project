@@ -5,6 +5,13 @@ Projeyi Docker Compose aracılığıyla lokalinizde ayağa kaldırmak için term
 ```charp
  docker compose up -d
 ```
+Admin Hesabının kullanıcı adı ve şifresi:
+```charp
+Kullanıcı Adı: burakarslan0110
+Şifre: 8s7k5858K
+Admin paneline giriş adresi: localhost/Admin/Dashboard/
+```
+
 
 ## Ana Sayfa
 
