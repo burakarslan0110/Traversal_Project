@@ -1,0 +1,27 @@
+services:
+  traversalappdb:
+    container_name: traversaldb
+    image: burakarslan0110/traversaldbimage
+    ports:
+     - 8002:1433
+    environment:
+     - ACCEPT_EULA=Y"
+     - MSSQL_SA_PASSWORD=PassW@rd01.
+    networks:
+     - traversalappnet
+  traversalpresentationlayer:
+    container_name: Traversal-App
+    image: burakarslan0110/traversalpresentationlayer
+    ports:
+     - 80:8080
+    depends_on:
+    - traversalappdb
+    environment:
+    - DB_HOST=traversalappdb
+    - DB_NAME=TraversalDB
+    - DB_SA_PASSWORD=PassW@rd01.
+    networks:
+     - traversalappnet
+
+networks:
+  traversalappnet:
